@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학학원 레벨테스트 리포트</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Recharts (Charts) -->
+    <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #f9fafb; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .recharts-cartesian-grid-horizontal line, .recharts-cartesian-grid-vertical line {
+            stroke: #f3f4f6;
+        }
+        /* 로딩 중 깜빡임 방지 */
+        #root:empty { display: none; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { 
+            Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, 
+            ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip 
+        } = Recharts;
+
+        const App = () => {
+            const studentInfo = {
+                name: "김민수",
+                school: "강남중학교 2학년",
+                testDate: "2023-10-27",
+                testType: "중등 수학(상) 과정 종합 레벨테스트",
+                totalScore: 82,
+                percentile: 12,
+                assignedLevel: "Mastery (심화반)"
+            };
+
+            const skillData = [
+                { subject: '계산력', A: 90 },
+                { subject: '개념이해', A: 85 },
+                { subject: '추론력', A: 70 },
+                { subject: '문제해결', A: 75 },
+                { subject: '서술형응용', A: 65 },
+            ];
+
+            const unitData = [
+                { unit: '유리수', score: 100, avg: 85 },
+                { unit: '식의 계산', score: 90, avg: 78 },
+                { unit: '부등식', score: 75, avg: 72 },
+                { unit: '연립방정식', score: 85, avg: 70 },
+                { unit: '일차함수', score: 60, avg: 65 },
+            ];
+
+            return (
+                <div className="max-w-4xl mx-auto p-4 md:p-8 animate-in fade-in duration-500">
+                    {/* Header */}
+                    <header className="bg-white rounded-2xl shadow-sm p-6 mb-6 border-l-8 border-blue-600">
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <h1 className="text-2xl font-bold text-gray-900">진단 평가 분석 보고서</h1>
+                                <p className="text-gray-500 text-sm font-medium">PRIME MATH ACADEMY</p>
+                            </div>
+                            <div className="bg-blue-50 px-4 py-2 rounded-lg text-right">
+                                <p className="text-xs text-blue-600 font-semibold uppercase tracking-tight">Assigned Level</p>
+                                <p className="text-xl font-black text-blue-700">{studentInfo.assignedLevel}</p>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-gray-100 text-sm">
+                            <div><span className="text-gray-400 block mb-1">학생명</span><span className="font-bold text-gray-800">{studentInfo.name}</span></div>
+                            <div><span className="text-gray-400 block mb-1">학교/학년</span><span className="font-bold text-gray-800">{studentInfo.school}</span></div>
+                            <div><span className="text-gray-400 block mb-1">응시일</span><span className="font-bold text-gray-800">{studentInfo.testDate}</span></div>
+                            <div><span className="text-gray-400 block mb-1">종합 점수</span><span className="font-bold text-blue-600">{studentInfo.totalScore}점 (상위 {studentInfo.percentile}%)</span></div>
+                        </div>
+                    </header>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Radar Chart */}
+                        <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+                            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="bar-chart-3" className="w-5 h-5 text-blue-600"></i>
+                                영역별 분석
+                            </h2>
+                            <div className="h-64">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <RadarChart cx="50%" cy="50%" outerRadius="80%" data={skillData}>
+                                        <PolarGrid stroke="#e5e7eb" />
+                                        <PolarAngleAxis dataKey="subject" tick={{fill: '#6b7280', fontSize: 12}} />
+                                        <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
+                                        <Radar name="학생 성취도" dataKey="A" stroke="#2563eb" fill="#2563eb" fillOpacity={0.5} />
+                                    </RadarChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </div>
+
+                        {/* Bar Chart */}
+                        <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
+                            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+                                <i data-lucide="clipboard-check" className="w-5 h-5 text-blue-600"></i>
+                                단원별 성취도
+                            </h2>
+                            <div className="h-64">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <BarChart data={unitData} layout="vertical" margin={{left: 10, right: 30}}>
+                                        <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                                        <XAxis type="number" domain={[0, 100]} hide />
+                                        <YAxis dataKey="unit" type="category" width={80} tick={{fontSize: 12, fill: '#4b5563'}} />
+                                        <Tooltip cursor={{fill: '#f8fafc'}} contentStyle={{borderRadius: '10px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)'}} />
+                                        <Bar dataKey="score" name="내 점수" fill="#2563eb" radius={[0, 4, 4, 0]} barSize={18} />
+                                        <Bar dataKey="avg" name="평균" fill="#e5e7eb" radius={[0, 4, 4, 0]} barSize={10} />
+                                    </BarChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </div>
+
+                        {/* Analysis Box */}
+                        <div className="bg-white rounded-2xl shadow-sm p-6 md:col-span-2 border border-gray-100">
+                            <h2 className="text-lg font-bold mb-4 flex items-center gap-2 text-gray-900">
+                                <i data-lucide="message-square" className="w-5 h-5 text-blue-600"></i>
+                                종합 학습 의견
+                            </h2>
+                            <div className="bg-blue-50/50 p-5 rounded-xl text-[15px] leading-relaxed text-gray-700 border border-blue-100">
+                                <p className="font-bold text-blue-800 mb-2 flex items-center gap-1">
+                                    <i data-lucide="info" className="w-4 h-4"></i> 분석 결과 요약
+                                </p>
+                                김민수 학생은 전반적인 연산 정확도가 매우 높습니다. 다만, 일차함수 단원에서 문장제 문제를 수식으로 변환하는 과정에 어려움을 보이고 있습니다. 다음 학기 심화반 입과를 위해 활용 문항 위주의 집중 클리닉을 추천합니다.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <footer className="mt-8 text-center text-gray-400 text-xs">
+                        <p>© 2023 PRIME MATH ACADEMY. All rights reserved.</p>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+        
+        // 아이콘 렌더링 지연 처리
+        setTimeout(() => lucide.createIcons(), 100);
+    </script>
+</body>
+</html>
