@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>성취도 평가 리포트 - 민제언 학생</title>
+    <title>성취도 평가 리포트 - 송시우 학생</title>
     <style>
         :root {
-            --primary: #1e293b;      /* 깊은 슬레이트 블루 */
-            --accent: #4f46e5;       /* 모던한 인디고 */
-            --accent-soft: #eef2ff;  /* 연한 인디고 배경 */
+            --primary: #1e293b;
+            /* 깊은 슬레이트 블루 */
+            --accent: #4f46e5;
+            /* 모던한 인디고 */
+            --accent-soft: #eef2ff;
+            /* 연한 인디고 배경 */
             --bg-gray: #f1f5f9;
             --text-dark: #0f172a;
             --text-gray: #475569;
@@ -42,7 +46,7 @@
             padding: 30px 24px;
             margin-bottom: 24px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         /* 헤더 섹션: 세련된 레이아웃으로 조정 */
@@ -213,9 +217,20 @@
             line-height: 1.5;
         }
 
-        .status-o { color: var(--accent); font-weight: 800; }
-        .status-triangle { color: #f59e0b; font-weight: 800; }
-        .status-x { color: #ef4444; font-weight: 800; }
+        .status-o {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .status-triangle {
+            color: #f59e0b;
+            font-weight: 800;
+        }
+
+        .status-x {
+            color: #ef4444;
+            font-weight: 800;
+        }
 
         /* 인쇄 버튼 */
         .print-btn-float {
@@ -245,9 +260,20 @@
 
         /* 2. 인쇄 전용 스타일 (Print) */
         @media print {
-            body { background: white; }
-            .print-btn-float { display: none; }
-            .container { padding: 0; width: 210mm; max-width: none; }
+            body {
+                background: white;
+            }
+
+            .print-btn-float {
+                display: none;
+            }
+
+            .container {
+                padding: 0;
+                width: 210mm;
+                max-width: none;
+            }
+
             .card {
                 box-shadow: none !important;
                 border: none !important;
@@ -255,20 +281,48 @@
                 margin-bottom: 40px !important;
                 border-radius: 0 !important;
             }
-            .header-section { border-bottom: 2px solid #000; }
-            .header-section .course-name { border: 1px solid #000; background: #fff !important; color: black !important; }
-            .page-break { page-break-before: always; }
-            
-            /* A4 인쇄용 여백 및 폰트 조정 */
-            .header-section h1 { font-size: 32px; }
-            .feedback-content { font-size: 16px; line-height: 2.0; }
-            table { font-size: 14px; border-top: 1.5px solid #000; }
-            th { background: #f0f0f0 !important; color: black !important; }
 
-            .stat-item { border: 1px solid #eee; }
+            .header-section {
+                border-bottom: 2px solid #000;
+            }
+
+            .header-section .course-name {
+                border: 1px solid #000;
+                background: #fff !important;
+                color: black !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            /* A4 인쇄용 여백 및 폰트 조정 */
+            .header-section h1 {
+                font-size: 32px;
+            }
+
+            .feedback-content {
+                font-size: 16px;
+                line-height: 2.0;
+            }
+
+            table {
+                font-size: 14px;
+                border-top: 1.5px solid #000;
+            }
+
+            th {
+                background: #f0f0f0 !important;
+                color: black !important;
+            }
+
+            .stat-item {
+                border: 1px solid #eee;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- 부동 인쇄 버튼 -->
@@ -286,26 +340,26 @@
                     과정명: 기초 초등연산 과정
                 </div>
                 <div class="student-info">
-                    <strong>민제언</strong> 학생의 학습 분석 리포트입니다.
+                    <strong>송시우</strong> 학생의 학습 분석 리포트입니다.
                 </div>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="label">종합 점수</span>
-                    <span class="value">78점</span>
+                    <span class="value">65점</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">성취 등급</span>
-                    <span class="value">우수</span>
+                    <span class="value">보통</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">풀이 시간</span>
-                    <span class="value">30분</span>
+                    <span class="value">47분</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">원리 이행률</span>
-                    <span class="value">76.09%</span>
+                    <span class="value">67.39%</span>
                 </div>
             </div>
 
@@ -317,13 +371,19 @@
         <!-- 피드백 카드 -->
         <div class="card">
             <div class="feedback-box">
-                <div class="feedback-title">종합 분석 피드백</div>
+                <div class="feedback-title">종합 분석 피드맥</div>
                 <div class="feedback-content">
                     <p>
-                        제언이는 <b>전체 풀이 시간 30분</b>이라는 뛰어난 속도를 보여주었습니다. 특히 나눗셈의 본질인 <b>'포함제(4,5,7번)'</b> 원리를 완벽히 파악하여 문장제 상황에서의 응용력이 매우 탁월한 것으로 나타났습니다.
+                        시우는 <b>원리 이행률 67.39%</b>를 기록하며 기본적인 개념 이해도를 보여주었으나, <b>전체 풀이 시간(47분)</b>이 다소 소요되었습니다. 특히 <b>수분해
+                            원리(1-8, 1-9)</b>와 <b>나눗셈 포함제(5, 7번)</b> 문항에서 'X' 판정을 받은 부분은 개념의 도구화가 아직 완성되지 않았음을 의미합니다.
                     </p>
                     <p>
-                        다만, 이번 평가의 핵심인 <b>나눗셈 수분해(1-8, 1-9)</b> 등에서 <b>'△(원리 미적용)'</b> 판정을 받았습니다. 이는 정답은 도출했으나 기존의 기계적인 세로셈 방식에 의존했음을 보여줍니다. 수의 성질을 이용한 식의 유연한 분해는 고난도 수학으로 가는 핵심 기초이므로, <b>원리에 입각한 풀이 훈련</b>을 지속하겠습니다.
+                        반면, <b>가우스 합(11, 12번)</b>과 같은 심화 원리 및 <b>단위 체계(1-6, 1-7)</b> 문항에서는 완벽한 정답률을 보이며 높은 수적 감각을
+                        증명했습니다. 현재는 아는 문제를 정확하게 푸는 힘은 좋으나, 생소한 원리를 적용할 때 시간이 지체되는 경향이 있습니다.
+                    </p>
+                    <p>
+                        시우에게 가장 필요한 것은 <b>'기계적 연산을 넘어선 원리 적용의 습관화'</b>입니다. 틀린 문항인 나눗셈 수분해 전략을 집중 보완하고, 풀이 시간을 단축하는 훈련을
+                        병행한다면 충분히 상위 등급으로 도약할 수 있는 잠재력이 큽니다.
                     </p>
                 </div>
             </div>
@@ -344,38 +404,38 @@
                     <tbody>
                         <tr>
                             <td>1-1~1-5<br><small>(수분해 기초)</small></td>
-                            <td class="status-triangle" style="text-align: center;">△ / X / ○</td>
-                            <td>보수 및 식 분해 원리보다는 직관적 계산에 의존함. 원리를 통한 식 간소화 복습 필요.</td>
+                            <td class="status-triangle" style="text-align: center;">○ / △ / △ / X / ○</td>
+                            <td>기본적인 수의 구성은 이해하고 있으나, 보수를 활용한 식 분해 과정에서 실수가 발견됨. 원리 적용보다는 결과 도출에 치중함.</td>
                         </tr>
                         <tr>
                             <td>1-6~1-7<br><small>(수체계/단위)</small></td>
                             <td class="status-o" style="text-align: center;">○ / ○</td>
-                            <td>cm-m 단위 환산 및 큰 수 체계(억/조 단위)에 대한 개념적 이해도가 매우 높음.</td>
+                            <td>단위 환산 및 큰 수의 자리값 개념이 매우 견고함. 기초 수 체계에 대한 이해도가 학습의 강점으로 작용하고 있음.</td>
                         </tr>
                         <tr>
                             <td>1-8~1-9<br><small>(나눗셈 수분해)</small></td>
-                            <td class="status-triangle" style="text-align: center;">△ / △</td>
-                            <td>나눠지는 수를 쪼개어 계산하는 원리 대신 세로셈 사용. 수분해 전략 숙달 훈련 예정.</td>
+                            <td class="status-x" style="text-align: center;">X / X</td>
+                            <td>나눠지는 수를 전략적으로 쪼개어 연산하는 '수분해 원리'가 아직 정립되지 않음. 세로셈 이외의 다양한 연산 전략 숙달이 시급함.</td>
                         </tr>
                         <tr>
                             <td>2-1~2-4<br><small>(혼합/분배법칙)</small></td>
-                            <td class="status-o" style="text-align: center;">○ / △ / ○</td>
-                            <td>곱셈의 본질과 반복 합의 관계를 잘 이해함. 분배 원리를 활용한 식 정리 과정이 안정적임.</td>
+                            <td class="status-o" style="text-align: center;">○ / △ / ○ / ○</td>
+                            <td>분배법칙의 기초적인 흐름은 파악하고 있으나, 복합적인 식의 전개 과정에서 원리 적용이 누락되는 구간이 있음.</td>
                         </tr>
                         <tr>
                             <td>3~7<br><small>(나눗셈 포함제)</small></td>
-                            <td class="status-o" style="text-align: center;">○ / ○ / ○</td>
-                            <td>나눗셈의 포함제 의미를 완벽히 파악함. 문장제 상황에서 식을 도출하는 능력이 탁월함.</td>
+                            <td class="status-triangle" style="text-align: center;">○ / ○ / X / ○ / X</td>
+                            <td>나눗셈의 포함제 의미를 알고 있으나, 문장제 문항(5, 7번)에서 오답 발생. 언어적 맥락을 수식으로 치환하는 훈련이 필요함.</td>
                         </tr>
                         <tr>
                             <td>8~10<br><small>(배수/조건추론)</small></td>
-                            <td class="status-o" style="text-align: center;">○ / ○ / X</td>
-                            <td>배수의 성질 활용도가 높으나, 배수와 관련된 수 세기에 대한 이해 점검이 필요함.</td>
+                            <td class="status-triangle" style="text-align: center;">○ / ○ / X</td>
+                            <td>수의 배수 관계를 파악하는 능력은 양호하나, 조건이 복합적으로 제시된 문항에서 추론의 정확도가 다소 떨어짐.</td>
                         </tr>
                         <tr>
                             <td>11~12<br><small>(가우스합/심화)</small></td>
                             <td class="status-o" style="text-align: center;">○ / ○</td>
-                            <td>수의 대칭성을 이용한 합(가우스 합) 원리 이해가 깊음. 논리적 연산 감각이 매우 우수함.</td>
+                            <td>연속된 수의 합 원리(가우스 합)를 정확히 이해하고 적용함. 고난도 사고력 문항에서 강한 집중력과 논리력을 보여줌.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -384,11 +444,12 @@
                 ※ ○: 정답 및 원리 적용 | △: 답은 맞으나 원리 미적용 | X: 오답
             </div>
         </div>
-        
+
         <div class="footer no-print" style="text-align: center; padding: 20px; color: #94a3b8; font-size: 0.85rem;">
             본 리포트는 학생의 학습 성취도를 다각도로 분석한 결과입니다.<br>문의사항은 학원으로 연락 주시기 바랍니다.
         </div>
     </div>
 
 </body>
+
 </html>
