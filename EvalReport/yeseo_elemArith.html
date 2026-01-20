@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>성취도 평가 리포트 - 이담 학생</title>
+    <title>성취도 평가 리포트 - 조예서 학생</title>
     <style>
         :root {
             --primary: #1e293b;
-            /* 깊은 슬레이트 블루 */
             --accent: #4f46e5;
-            /* 모던한 인디고 */
             --accent-soft: #eef2ff;
-            /* 연한 인디고 배경 */
             --bg-gray: #f1f5f9;
             --text-dark: #0f172a;
             --text-gray: #475569;
@@ -20,7 +17,6 @@
             --white: #ffffff;
         }
 
-        /* 1. 기본 스타일 (모바일 우선) */
         body {
             font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
             line-height: 1.6;
@@ -31,7 +27,6 @@
             word-break: keep-all;
         }
 
-        /* 모바일용 컨테이너 */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -39,7 +34,6 @@
             box-sizing: border-box;
         }
 
-        /* 모바일 카드 디자인 */
         .card {
             background: var(--white);
             border-radius: 20px;
@@ -49,7 +43,6 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* 헤더 섹션: 세련된 레이아웃으로 조정 */
         .header-section {
             text-align: center;
             padding-bottom: 30px;
@@ -99,7 +92,6 @@
             padding: 12px;
             border-radius: 12px;
             margin-top: 5px;
-            transition: all 0.3s ease;
         }
 
         .header-section .student-info {
@@ -114,7 +106,6 @@
             border-bottom: 2px solid var(--accent-soft);
         }
 
-        /* 지표 그리드 (모바일 2열) */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -142,12 +133,6 @@
             font-size: 1.4rem;
             font-weight: 800;
             color: var(--primary);
-        }
-
-        /* 피드백 텍스트 (줄글) */
-        .feedback-box {
-            background: #fff;
-            padding: 0;
         }
 
         .feedback-title {
@@ -181,12 +166,10 @@
 
         .feedback-content b {
             color: var(--accent);
-            background: transparent;
             font-weight: 700;
             border-bottom: 2px solid var(--accent-soft);
         }
 
-        /* 테이블 (모바일 스크롤 지원) */
         .table-wrapper {
             overflow-x: auto;
             border: 1px solid var(--border);
@@ -214,7 +197,6 @@
             padding: 16px 12px;
             border-bottom: 1px solid var(--border);
             color: #334155;
-            line-height: 1.5;
         }
 
         .status-o {
@@ -232,7 +214,6 @@
             font-weight: 800;
         }
 
-        /* 인쇄 버튼 */
         .print-btn-float {
             position: fixed;
             bottom: 30px;
@@ -251,21 +232,15 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: transform 0.2s ease;
         }
 
-        .print-btn-float:active {
-            transform: translateX(-50%) scale(0.95);
-        }
-
-        /* 2. 인쇄 전용 스타일 (Print) */
         @media print {
-            body {
-                background: white;
-            }
-
             .print-btn-float {
                 display: none;
+            }
+
+            body {
+                background: white;
             }
 
             .container {
@@ -275,48 +250,7 @@
             }
 
             .card {
-                box-shadow: none !important;
-                border: none !important;
-                padding: 0 !important;
-                margin-bottom: 40px !important;
-                border-radius: 0 !important;
-            }
-
-            .header-section {
-                border-bottom: 2px solid #000;
-            }
-
-            .header-section .course-name {
-                border: 1px solid #000;
-                background: #fff !important;
-                color: black !important;
-            }
-
-            .page-break {
-                page-break-before: always;
-            }
-
-            /* A4 인쇄용 여백 및 폰트 조정 */
-            .header-section h1 {
-                font-size: 32px;
-            }
-
-            .feedback-content {
-                font-size: 16px;
-                line-height: 2.0;
-            }
-
-            table {
-                font-size: 14px;
-                border-top: 1.5px solid #000;
-            }
-
-            th {
-                background: #f0f0f0 !important;
-                color: black !important;
-            }
-
-            .stat-item {
+                box-shadow: none;
                 border: 1px solid #eee;
             }
         }
@@ -334,18 +268,14 @@
             <div class="header-section">
                 <span class="course-badge">초중등 수학전문 윈드수학학원</span>
                 <h1>성취도 평가 결과 리포트</h1>
-                <div class="course-name">
-                    과정명: 기초 초등연산
-                </div>
-                <div class="student-info">
-                    <strong>이담</strong> 학생의 학습 분석 리포트입니다.
-                </div>
+                <div class="course-name">과정명: 기초 초등연산</div>
+                <div class="student-info"><strong>조예서</strong> 학생의 학습 분석 리포트입니다.</div>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="label">종합 점수</span>
-                    <span class="value">77</span>
+                    <span class="value">71</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">성취 등급</span>
@@ -353,31 +283,29 @@
                 </div>
                 <div class="stat-item">
                     <span class="label">풀이 시간</span>
-                    <span class="value">40</span>
+                    <span class="value">50분</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">원리 이행률</span>
-                    <span class="value">73.91%</span>
+                    <span class="value">67.39%</span>
                 </div>
             </div>
-
             <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
                 평가 일자: 2026년 1월 20일
             </div>
         </div>
 
         <div class="card">
-            <div class="feedback-box">
-                <div class="feedback-title">종합 분석 피드백</div>
-                <div class="feedback-content">
-                    <p>이담 학생은 현재 <b>초등학교 6학년</b>으로서 기초 연산 과정을 성실하게 이행하고 있습니다. <b>원리 이행률 73.91%</b>로 전반적인 계산 원리에 대한 이해도는
-                        양호한 편이나, 특정 영역에서 집중적인 보완이 필요해 보입니다.</p>
-                    <p>특히 <b>곱셈의 분해 원리</b>와 <b>나눗셈의 기초 개념</b> 부분에서 약점을 보이고 있습니다. 큰 수를 작은 수로 분리하여 곱하는 기술이나 나눗셈에서 몫의
-                        의미(포함제)를 파악하는 능력은 우수하나, 정작 <b>나눗셈의 계산 과정(나머지 구하기)</b>에서 반복적인 오답이 발견됩니다.</p>
-                    <p>반면, <b>단위 환산</b>과 <b>보수 개념</b> 등 기초 수감각은 매우 탄탄합니다. 현재 등급은 <b>보통</b> 수준이지만, 오답이 집중된 배수와 나눗셈의 원리
-                        부분을 다시 점검한다면 충분히 상위 등급으로 도약할 가능성이 큽니다. 앞으로는 단순 반복 계산보다는 <b>나눗셈의 원리와 약수/배수의 상관관계</b>를 직관적으로 이해하는
-                        훈련을 병행할 것을 권장합니다.</p>
-                </div>
+            <div class="feedback-title">종합 분석 피드백</div>
+            <div class="feedback-content">
+                <p>조예서 학생은 <b>종합 점수 71점</b>으로 현재 <b>보통</b> 등급의 성취도를 보이고 있습니다. 연산의 결과값을 도출하는 능력은 갖추어져 있으나, <b>원리 이행률이
+                        67.39%</b>로 다른 학생들에 비해 다소 낮게 나타납니다. 이는 문제에서 요구하는 '수학적 원리'를 활용하기보다 익숙한 <b>세로셈이나 단순 반복 계산</b>에
+                    의존하는 경향이 있기 때문으로 분석됩니다.</p>
+                <p>특히 <b>보수의 개념</b>과 <b>뺄셈을 거리로 이해하는 과정</b>에서 어려움을 겪고 있습니다. 1-1번과 1-3번 문항에서 오답이 발생한 점을 볼 때, 수의 관계를 파악하여
+                    유연하게 계산하는 '수감각' 보충이 필요합니다. 또한 <b>풀이 시간이 50분</b>으로 가장 길게 소요되었는데, 이는 원리를 활용해 계산 과정을 단축하지 못하고 일일이 계산하는
+                    과정에서 발생하는 지체 현상입니다.</p>
+                <p>하지만 <b>나눗셈의 포함제 개념</b>이나 <b>연산의 우선순위(괄호)</b>, <b>단위 환산</b> 능력은 매우 우수합니다. 앞으로는 계산 속도에 집착하기보다, 숫자를
+                    <b>분해하고 결합하는 원리 학습</b>에 집중한다면 풀이 시간 단축과 정확도 향상을 동시에 꾀할 수 있을 것입니다.</p>
             </div>
         </div>
 
@@ -395,44 +323,43 @@
                     <tbody>
                         <tr>
                             <td>1-1, 2-1<br><small>보수의 개념</small></td>
-                            <td class="status-triangle" style="text-align: center;">○ / △</td>
-                            <td>보수를 활용한 덧셈 원리를 알고 있습니다. 다만 복합 계산 상황에서 원리 적용이 다소 불안정할 수 있으니 주의가 필요합니다.</td>
+                            <td class="status-x" style="text-align: center;">✕ / ✕</td>
+                            <td>보수를 이용하여 식을 간단히 만드는 원리에 대한 이해가 부족합니다. 10, 100 단위의 보수 찾기 연습이 필요합니다.</td>
                         </tr>
                         <tr>
                             <td>1-2, 2-2, 2-4<br><small>곱셈의 분해와 결합</small></td>
                             <td class="status-x" style="text-align: center;">✕ / ○ / △</td>
-                            <td>곱셈식을 덧셈이나 뺄셈으로 분해하여 계산하는 능력이 부족합니다. 곱셈의 분배 법칙에 대한 기초 원리 복습을 권유합니다.</td>
+                            <td>곱셈을 덧셈이나 뺄셈의 결합으로 보는 시각이 부족합니다. 다만, 정형화된 곱셈식의 계산은 수행 가능합니다.</td>
                         </tr>
                         <tr>
                             <td>1-3, 1-4, 2-3<br><small>연산의 의미와 수의 분해</small></td>
-                            <td class="status-o" style="text-align: center;">○ / ○ / ○</td>
-                            <td>뺄셈을 거리로 인식하고, 곱셈을 동수누가로 이해하는 등 연산의 본질적 의미를 매우 잘 파악하고 있습니다.</td>
+                            <td class="status-x" style="text-align: center;">✕ / ○ / ○</td>
+                            <td>뺄셈을 수직선상의 '거리'로 인식하는 개념 보완이 필요합니다. 수의 분해를 통한 계산은 양호합니다.</td>
                         </tr>
                         <tr>
                             <td>1-5, 6, 12<br><small>연산 법칙과 공통 인수</small></td>
                             <td class="status-o" style="text-align: center;">○ / ○ / ○</td>
-                            <td>덧셈의 교환법칙과 곱셈의 공통 인수를 묶어내는 논리적인 사고력이 우수합니다.</td>
+                            <td>공통 인수를 묶어 계산하거나 연산 법칙을 적용하는 논리적 사고력이 훌륭합니다.</td>
                         </tr>
                         <tr>
                             <td>1-6, 1-7<br><small>단위와 큰 수</small></td>
                             <td class="status-o" style="text-align: center;">○ / ○</td>
-                            <td>무게, 들이, 길이 단위의 체계와 만 단위 이상의 큰 수 읽기 능력이 완벽하게 형성되어 있습니다.</td>
+                            <td>무게, 길이 등 단위 환산과 억 단위 이상의 큰 수 체계를 정확히 이해하고 있습니다.</td>
                         </tr>
                         <tr>
                             <td>1-8, 1-9, 4, 5, 7<br><small>나눗셈의 원리와 몫</small></td>
-                            <td class="status-x" style="text-align: center;">✕ / ✕ / ○ / ○ / ○</td>
-                            <td>나눗셈에서 몫의 개념은 잘 잡혀있으나, 실제 <b>나눠지는 수를 분해하여 나머지를 구하는 구체적인 계산 원리</b>에서 반복적인 오답이 발생하고 있습니다.
-                            </td>
+                            <td class="status-o" style="text-align: center;">○ / ○ / ○ / ○ / ○</td>
+                            <td>나눗셈의 포함제 개념(몇 번 들어가는가)과 나머지의 원리를 완벽하게 마스터했습니다. 예서 학생의 가장 큰 강점입니다.</td>
                         </tr>
                         <tr>
                             <td>8, 9, 10, 11<br><small>약수와 배수, 소수</small></td>
-                            <td class="status-x" style="text-align: center;">✕ / ✕ / ○ / ○</td>
-                            <td>소수의 정의는 잘 알고 있으나, 배수의 정의를 활용하는 데 어려움을 겪고 있습니다. 자연수 배수의 개념을 다시 공부하길 권유합니다.</td>
+                            <td class="status-o" style="text-align: center;">○ / ○ / ○ / ○</td>
+                            <td>약수, 배수의 성질 및 소수의 정의를 정확히 파악하고 있으며, 이를 문제 풀이에 잘 적용합니다.</td>
                         </tr>
                         <tr>
                             <td>3<br><small>연산 순서(괄호)</small></td>
                             <td class="status-o" style="text-align: center;">○</td>
-                            <td>혼합 계산 시 괄호를 우선순위로 두는 연산 규칙을 정확히 준수합니다.</td>
+                            <td>복합 연산에서 괄호의 우선순위와 연산 순서를 정확히 지켜 계산합니다.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -440,10 +367,6 @@
             <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
                 ※ ○: 정답 및 원리 적용 | △: 답은 맞으나 원리 미적용 | X: 오답
             </div>
-        </div>
-
-        <div class="footer no-print" style="text-align: center; padding: 20px; color: #94a3b8; font-size: 0.85rem;">
-            본 리포트는 학생의 학습 성취도를 다각도로 분석한 결과입니다.<br>문의사항은 학원으로 연락 주시기 바랍니다.
         </div>
     </div>
 
