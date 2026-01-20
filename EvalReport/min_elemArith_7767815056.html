@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성취도 평가 리포트 - 민제언 학생</title>
+    <style>
+        :root {
+            --primary: #1e293b;      /* 깊은 슬레이트 블루 */
+            --accent: #4f46e5;       /* 모던한 인디고 */
+            --accent-soft: #eef2ff;  /* 연한 인디고 배경 */
+            --bg-gray: #f1f5f9;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        /* 1. 기본 스타일 (모바일 우선) */
+        body {
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-gray);
+            word-break: keep-all;
+        }
+
+        /* 모바일용 컨테이너 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            box-sizing: border-box;
+        }
+
+        /* 모바일 카드 디자인 */
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* 헤더 섹션: 세련된 레이아웃으로 조정 */
+        .header-section {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .header-section .course-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .header-section h1 {
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            margin: 0 0 16px 0;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .header-section .course-name {
+            display: block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .header-section .student-info {
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .header-section .student-info strong {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-soft);
+        }
+
+        /* 지표 그리드 (모바일 2열) */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-item .label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-item .value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* 피드백 텍스트 (줄글) */
+        .feedback-box {
+            background: #fff;
+            padding: 0;
+        }
+
+        .feedback-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .feedback-content {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #334155;
+        }
+
+        .feedback-content p {
+            margin-bottom: 20px;
+        }
+
+        .feedback-content b {
+            color: var(--accent);
+            background: transparent;
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-soft);
+        }
+
+        /* 테이블 (모바일 스크롤 지원) */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 550px;
+            background: var(--white);
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--text-gray);
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 16px 12px;
+            border-bottom: 1px solid var(--border);
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .status-o { color: var(--accent); font-weight: 800; }
+        .status-triangle { color: #f59e0b; font-weight: 800; }
+        .status-x { color: #ef4444; font-weight: 800; }
+
+        /* 인쇄 버튼 */
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* 2. 인쇄 전용 스타일 (Print) */
+        @media print {
+            body { background: white; }
+            .print-btn-float { display: none; }
+            .container { padding: 0; width: 210mm; max-width: none; }
+            .card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin-bottom: 40px !important;
+                border-radius: 0 !important;
+            }
+            .header-section { border-bottom: 2px solid #000; }
+            .header-section .course-name { border: 1px solid #000; background: #fff !important; color: black !important; }
+            .page-break { page-break-before: always; }
+            
+            /* A4 인쇄용 여백 및 폰트 조정 */
+            .header-section h1 { font-size: 32px; }
+            .feedback-content { font-size: 16px; line-height: 2.0; }
+            table { font-size: 14px; border-top: 1.5px solid #000; }
+            th { background: #f0f0f0 !important; color: black !important; }
+
+            .stat-item { border: 1px solid #eee; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 부동 인쇄 버튼 -->
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span>PDF 리포트 저장 및 인쇄</span>
+    </button>
+
+    <div class="container">
+        <!-- 상단 카드: 과정명이 강조된 헤더 섹션 -->
+        <div class="card">
+            <div class="header-section">
+                <span class="course-badge">초중등 수학전문 윈드수학학원</span>
+                <h1>성취도 평가 결과 리포트</h1>
+                <div class="course-name">
+                    과정명: 기초 초등연산 과정
+                </div>
+                <div class="student-info">
+                    <strong>민제언</strong> 학생의 학습 분석 리포트입니다.
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="label">종합 점수</span>
+                    <span class="value">78점</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">성취 등급</span>
+                    <span class="value">우수</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">풀이 시간</span>
+                    <span class="value">30분</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">원리 이행률</span>
+                    <span class="value">72%</span>
+                </div>
+            </div>
+
+            <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
+                평가 일자: 2026년 1월 20일
+            </div>
+        </div>
+
+        <!-- 피드백 카드 -->
+        <div class="card">
+            <div class="feedback-box">
+                <div class="feedback-title">종합 분석 피드백</div>
+                <div class="feedback-content">
+                    <p>
+                        제언이는 <b>전체 풀이 시간 30분</b>이라는 뛰어난 속도를 보여주었습니다. 특히 나눗셈의 본질인 <b>'포함제(4,5,7번)'</b> 원리를 완벽히 파악하여 문장제 상황에서의 응용력이 매우 탁월한 것으로 나타났습니다.
+                    </p>
+                    <p>
+                        다만, 이번 평가의 핵심인 <b>나눗셈 수분해(1-8, 1-9)</b> 등에서 <b>'△(원리 미적용)'</b> 판정을 받았습니다. 이는 정답은 도출했으나 기존의 기계적인 세로셈 방식에 의존했음을 보여줍니다. 수의 성질을 이용한 식의 유연한 분해는 고난도 수학으로 가는 핵심 기초이므로, <b>원리에 입각한 풀이 훈련</b>을 지속하겠습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 상세 분석 카드 -->
+        <div class="card">
+            <div class="feedback-title">문항별 상세 분석</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">번호/영역</th>
+                            <th style="width: 15%; text-align: center;">결과</th>
+                            <th>상세 학습 분석</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1-1~1-5<br><small>(수분해 기초)</small></td>
+                            <td class="status-triangle" style="text-align: center;">△ / X / ○</td>
+                            <td>보수 및 식 분해 원리보다는 직관적 계산에 의존함. 원리를 통한 식 간소화 복습 필요.</td>
+                        </tr>
+                        <tr>
+                            <td>1-6~1-7<br><small>(수체계/단위)</small></td>
+                            <td class="status-o" style="text-align: center;">○ / ○</td>
+                            <td>cm-m 단위 환산 및 큰 수 체계(억/조 단위)에 대한 개념적 이해도가 매우 높음.</td>
+                        </tr>
+                        <tr>
+                            <td>1-8~1-9<br><small>(나눗셈 수분해)</small></td>
+                            <td class="status-triangle" style="text-align: center;">△ / △</td>
+                            <td>나눠지는 수를 쪼개어 계산하는 원리 대신 세로셈 사용. 수분해 전략 숙달 훈련 예정.</td>
+                        </tr>
+                        <tr>
+                            <td>2-1~2-4<br><small>(혼합/분배법칙)</small></td>
+                            <td class="status-o" style="text-align: center;">○ / △ / ○</td>
+                            <td>곱셈의 본질과 반복 합의 관계를 잘 이해함. 분배 원리를 활용한 식 정리 과정이 안정적임.</td>
+                        </tr>
+                        <tr>
+                            <td>3~7<br><small>(나눗셈 포함제)</small></td>
+                            <td class="status-o" style="text-align: center;">○ / ○ / ○</td>
+                            <td>나눗셈의 포함제 의미를 완벽히 파악함. 문장제 상황에서 식을 도출하는 능력이 탁월함.</td>
+                        </tr>
+                        <tr>
+                            <td>8~10<br><small>(배수/조건추론)</small></td>
+                            <td class="status-o" style="text-align: center;">○ / ○ / X</td>
+                            <td>배수의 성질 활용도가 높으나, 배수와 관련된 수 세기에 대한 이해 점검이 필요함.</td>
+                        </tr>
+                        <tr>
+                            <td>11~12<br><small>(가우스합/심화)</small></td>
+                            <td class="status-o" style="text-align: center;">○ / ○</td>
+                            <td>수의 대칭성을 이용한 합(가우스 합) 원리 이해가 깊음. 논리적 연산 감각이 매우 우수함.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
+                ※ ○: 정답 및 원리 적용 | △: 답은 맞으나 원리 미적용 | X: 오답
+            </div>
+        </div>
+        
+        <div class="footer no-print" style="text-align: center; padding: 20px; color: #94a3b8; font-size: 0.85rem;">
+            본 리포트는 학생의 학습 성취도를 다각도로 분석한 결과입니다.<br>문의사항은 학원으로 연락 주시기 바랍니다.
+        </div>
+    </div>
+
+</body>
+</html>
