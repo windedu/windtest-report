@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>성취도 평가 리포트 - 배준영 학생</title>
+    <title> 성취도 평가 리포트 - 배준영 학생 </title>
     <style>
         :root {
             --primary: #1e293b;
@@ -18,7 +18,7 @@
         }
 
         body {
-            font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            font-family: 'Pretendard', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             margin: 0;
@@ -70,9 +70,7 @@
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
             margin-bottom: 15px;
-            text-transform: uppercase;
         }
 
         .header-section h1 {
@@ -80,7 +78,6 @@
             font-size: 1.75rem;
             margin: 0 0 16px 0;
             font-weight: 800;
-            letter-spacing: -0.02em;
         }
 
         .header-section .course-name {
@@ -197,6 +194,7 @@
             padding: 16px 12px;
             border-bottom: 1px solid var(--border);
             color: #334155;
+            line-height: 1.5;
         }
 
         .status-o {
@@ -229,6 +227,9 @@
             box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.4);
             cursor: pointer;
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         @media print {
@@ -242,118 +243,133 @@
 
             .card {
                 box-shadow: none;
-                border: 1px solid #eee;
+                border: none;
+                padding: 0;
+                margin-bottom: 40px;
             }
         }
     </style>
 </head>
 
 <body>
-
     <button class="print-btn-float no-print" onclick="window.print()">
-        <span>PDF 리포트 저장 및 인쇄</span>
+        <span> PDF 리포트 저장 및 인쇄 </span>
     </button>
 
     <div class="container">
         <div class="card">
             <div class="header-section">
-                <span class="course-badge">초중등 수학전문 윈드수학학원</span>
-                <h1>성취도 평가 결과 리포트</h1>
-                <div class="course-name">과정명: 기초 초등연산</div>
-                <div class="student-info">
-                    <strong>배준영</strong> 학생의 학습 분석 리포트입니다.
-                </div>
+                <span class="course-badge"> 초중등 수학전문 윈드수학학원 </span>
+                <h1> 성취도 평가 결과 리포트 </h1>
+                <div class="course-name"> 과정명: 기초 초등연산 </div>
+                <div class="student-info"> <strong> 배준영 </strong> 학생의 학습 분석 리포트입니다. </div>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <span class="label">종합 점수</span>
-                    <span class="value">85</span>
+                    <span class="label"> 종합 점수 </span>
+                    <span class="value"> 85 </span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">성취 등급</span>
-                    <span class="value">우수</span>
+                    <span class="label"> 성취 등급 </span>
+                    <span class="value"> 우수 </span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">풀이 시간</span>
-                    <span class="value">45분</span>
+                    <span class="label"> 풀이 시간 </span>
+                    <span class="value"> 45분 </span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">원리 이행률</span>
-                    <span class="value">84.78%</span>
+                    <span class="label"> 원리 이행률 </span>
+                    <span class="value"> 84.78% </span>
                 </div>
             </div>
-            <div style="font-size: 0.85rem; color: #94a3b8; text-align: right;">평가 일자: 2026년 1월 20일</div>
-        </div>
-
-        <div class="card">
-            <div class="feedback-title">종합 분석 피드백</div>
-            <div class="feedback-content">
-                <p>배준영 학생은 이번 기초 초등연산 평가에서 <b>85점</b>이라는 높은 점수를 기록하며 <b>'우수' 등급</b>의 성취도를 보였습니다. 특히 주목할 점은 <b>원리 이행률이
-                        84.78%</b>로 매우 높다는 것입니다. 이는 단순히 답을 맞히는 것에 그치지 않고, 각 연산이 가진 수학적 원리와 효율적인 계산 전략을 정확히 이해하고 풀이 과정에
-                    녹여내고 있음을 의미합니다.</p>
-                <p>덧셈의 보수 원리(1-1)나 곱셈의 분해 결합(1-2, 2-2) 등 <b>수의 성질을 활용한 영역</b>에서 탁월한 강점을 보이고 있습니다. 다만, 뺄셈의 거리 개념(1-3) 등
-                    일부 영역에서 사소한 실수가 관찰되는데, 이는 원리 이행 능력이 뛰어난 만큼 조금만 더 꼼꼼함을 갖춘다면 충분히 만점으로 도약할 수 있는 수준입니다.</p>
-                <p>전반적인 <b>수학적 논리력과 수 감각(Number Sense)</b>이 매우 우수하므로, 앞으로는 연산의 정교함을 다듬으면서 조금 더 복합적인 사고를 요하는 응용 연산으로의 확장을
-                    권장합니다. 지금의 우수한 원리 이행 습관을 유지한다면 고학년 과정에서도 매우 강력한 무기를 갖게 될 것입니다.</p>
+            <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
+                평가 일자: 2026년 1월 20일
             </div>
         </div>
 
         <div class="card">
-            <div class="feedback-title">문항별 상세 분석</div>
+            <div class="feedback-box">
+                <div class="feedback-title"> 종합 분석 피드백 </div>
+                <div class="feedback-content">
+                    <p>배준영 학생은 기초 초등연산 과정에서 <b>85점</b>을 기록하며 <b>'우수'</b> 등급에 해당합니다. 전반적으로 연산의 기본 원리와 심화 활용 능력이 매우 균형 잡혀
+                        있습니다. 특히 <b>보수</b>를 활용한 연산과 <b>계산 법칙(교환/결합/분배)</b>의 적용 능력이 탁월하여 효율적인 계산 습관이 잘 형성되어 있습니다.</p>
+                    <p>주요 보완 사항으로는 <b>나눗셈의 분해 원리(1-9)</b>와 <b>곱셈의 분해(2-4)</b> 과정에서 발생하는 미세한 논리적 공백입니다. 또한 큰 수의 비교(7번)에서
+                        나타난 실수를 줄이고, 이미 잘 파악하고 있는 <b>배수와 소수</b> 개념을 바탕으로 수론의 심화 단계인 '약수의 응용' 파트로 학습 범위를 확장하기를 권장합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="feedback-title"> 문항별 상세 분석 </div>
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 25%;">번호/영역</th>
-                            <th style="width: 15%; text-align: center;">결과</th>
-                            <th>상세 학습 분석</th>
+                            <th style="width: 25%;"> 번호/영역 </th>
+                            <th style="width: 20%; text-align: center;"> 결과 </th>
+                            <th> 상세 학습 분석 </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1-1, 2-1<br><small>덧셈의 보수 원리</small></td>
-                            <td class="status-o" style="text-align: center;">❍ / ❍</td>
-                            <td>보수 개념을 완벽하게 이해하고 있습니다. 수를 적절히 결합하여 계산의 효율성을 극대화하는 모습이 인상적입니다.</td>
+                            <td>1-1 ~ 1-5<br><small>연산의 기본 원리와 분해</small></td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span>
+                            </td>
+                            <td><b>보수</b> 활용, <b>곱셈식의 분해</b>, 공통의 수 묶기 등 연산의 모든 기초 원리를 완벽하게 소화하고 있습니다.</td>
                         </tr>
                         <tr>
-                            <td>1-2, 2-2, 2-4<br><small>곱셈의 분해와 성질</small></td>
-                            <td class="status-o" style="text-align: center;">❍ / ❍ / ❍</td>
-                            <td><b>강점 영역.</b> 곱셈을 덧셈이나 뺄셈식으로 분해하여 계산하는 능력이 매우 탁월합니다. 수의 구조적 이해도가 높습니다.</td>
+                            <td>1-6 ~ 1-7<br><small>단위 및 큰 수의 체계</small></td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span>
+                            </td>
+                            <td><b>무게/들이/길이</b>의 단위 환산이 정확하며, <b>'만' 자리</b>를 기준으로 큰 수를 읽고 비교하는 능력이 우수합니다.</td>
                         </tr>
                         <tr>
-                            <td>1-3, 1-4, 1-5, 2-3<br><small>연산의 효율성</small></td>
-                            <td class="status-x" style="text-align: center;">✕ / ❍ / ❍ / ❍</td>
-                            <td>전반적으로 우수하나 뺄셈을 두 수의 차(거리)로 이해하는 부분에서 실수가 있었습니다. 해당 개념의 재점검이 필요합니다.</td>
+                            <td>1-8, 1-9, 4, 5, 8<br><small>나눗셈과 배수의 구조</small></td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-x">X</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-x">X</span>
+                            </td>
+                            <td><b>나눠지는 수를 분해</b>하여 몫과 나머지를 구하는 원리는 알고 있으나(1-8), 이를 복합 식에 적용(1-9)할 때 정교함이 필요합니다.</td>
                         </tr>
                         <tr>
-                            <td>1-6, 1-7<br><small>단위 및 수 체계</small></td>
-                            <td class="status-o" style="text-align: center;">❍ / ❍</td>
-                            <td>단위 변환 및 큰 수의 단위 체계에 대한 이해가 확실합니다. 실생활 수치 개념이 잘 잡혀 있습니다.</td>
+                            <td>2-1 ~ 2-4, 6<br><small>곱셈의 심화 및 분배</small></td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span> / <span class="status-x">X</span> / <span
+                                    class="status-o">O</span>
+                            </td>
+                            <td><b>보수 관계</b>를 통한 묶음 계산은 완벽합니다. 다만 곱셈을 <b>덧셈과 뺄셈으로 분해</b>(2-4)하여 계산하는 과정에서 세심한 주의가 필요합니다.
+                            </td>
                         </tr>
                         <tr>
-                            <td>1-8, 1-9, 4, 5, 7<br><small>나눗셈과 몫</small></td>
-                            <td class="status-o" style="text-align: center;">❍ / ❍ / ❍ / ❍ / ❍</td>
-                            <td>나눗셈의 정의와 몫의 성질을 완벽하게 파악하고 있습니다. 나누어지는 수를 분해하여 처리하는 기술이 능숙합니다.</td>
+                            <td>3, 7, 12<br><small>계산 법칙과 규칙</small></td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-triangle">△</span> / <span
+                                    class="status-o">O</span>
+                            </td>
+                            <td><b>혼합 계산 순서</b>와 <b>덧셈의 교환법칙</b>에 대한 이해도가 매우 높습니다. 큰 수의 크기 비교(7) 시 자릿수 확인 실수가 없도록 지도
+                                바랍니다.</td>
                         </tr>
                         <tr>
-                            <td>3, 6, 8, 9, 10, 11, 12<br><small>혼합 계산 및 응용</small></td>
-                            <td class="status-o" style="text-align: center;">❍ / ❍ / ❍ / ❍ / ✕ / ❍ / ❍</td>
-                            <td>복합적인 혼합 계산에서도 높은 정확도를 유지합니다. 한 문항의 오답은 단순 계산 실수로 보이며 전반적인 규칙 이행 능력은 우수합니다.</td>
+                            <td>9 ~ 11<br><small>수론 (배수와 소수)</small></td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span>
+                            </td>
+                            <td><b>소수(Prime Number)</b>의 정의와 <b>배수 관계</b>를 정확히 파악하고 있어 수의 성질을 다루는 영역에서 높은 정답률을 보입니다.
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
-                ※ ○: 정답 및 원리 적용 | △: 답은 맞으나 원리 미적용 | X: 오답
-            </div>
-        </div>
-
-        <div class="footer no-print" style="text-align: center; padding: 20px; color: #94a3b8; font-size: 0.85rem;">
-            본 리포트는 배준영 학생의 실제 테스트 데이터를 근거로 작성되었습니다.<br>윈드수학학원 교육팀
         </div>
     </div>
-
 </body>
 
 </html>
