@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 초등연산 성취도 - 민제언 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="민제언 기초 초등연산 테스트 리포트">
+    <meta property="og:description" content="기초 초등연산 과정에 대한 민제언 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop">
+
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #00A2FF;
+            --accent-soft: #E5F6FF;
+            --bg-gray: #f1f5f9;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-gray);
+            word-break: keep-all;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-section {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .header-section .course-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .header-section h1 {
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            margin: 0 0 16px 0;
+            font-weight: 800;
+        }
+
+        .header-section .course-name {
+            display: block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 5px;
+        }
+
+        .header-section .student-info {
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .header-section .student-info strong {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-soft);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-item .label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-item .value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .feedback-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .feedback-content {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #334155;
+        }
+
+        .feedback-content b {
+            color: var(--accent);
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-soft);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 550px;
+            background: var(--white);
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--text-gray);
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 16px 12px;
+            border-bottom: 1px solid var(--border);
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .status-o {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .status-p {
+            color: #f59e0b;
+            font-weight: 800;
+        }
+
+        .status-m {
+            color: #a855f7;
+            font-weight: 800;
+        }
+
+        .status-x {
+            color: #ef4444;
+            font-weight: 800;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            background-color: #cbd5e1;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #334155;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 리포트 저장 및 인쇄 </span>
+    </button>
+
+    <div class="container">
+        <div class="card">
+            <div class="header-section">
+                <span class="course-badge"> 초중등 수학전문 윈드수학학원 </span>
+                <h1> 성취도 평가 결과 리포트 </h1>
+                <div class="course-name"> 과정명: 기초 초등연산 </div>
+                <div class="student-info"> <strong> 민제언 </strong> 학생의 학습 분석 리포트입니다. </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="label"> 종합 점수 <span class="tooltip"><span class="tooltip-icon">?</span><span
+                                class="tooltip-text"> 문항별 배점 기준으로 100점 만점의 점수를 낸 것입니다. </span></span></span>
+                    <span class="value"> 88 </span>
+                </div>
+                <div class="stat-item">
+                    <span class="label"> 성취 등급 </span>
+                    <span class="value"> 우수 </span>
+                </div>
+                <div class="stat-item">
+                    <span class="label"> 풀이 시간 </span>
+                    <span class="value"> 30분 </span>
+                </div>
+                <div class="stat-item">
+                    <span class="label"> 원리 이행률<span class="tooltip"><span class="tooltip-icon">?</span><span
+                                class="tooltip-text"> 전체 문항 중 원리 기반 정답 도출한 문항의 비중을 계산한 것입니다. </span></span> </span>
+                    <span class="value"> 80.43% </span>
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
+                평가 일자: 2026년 1월 15일
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="feedback-title"> 종합 분석 피드백 </div>
+            <div class="feedback-content">
+                <p><b>민제언</b> 학생은 기초 초등연산 평가에서 <b>종합 점수 88점</b>과 <b>원리 이행률 80.43%</b>라는 우수한 성적을 거두었습니다. 전반적으로 연산의 기본 원리를
+                    잘 숙지하고 있으며, 복합적인 연산 상황에서도 흔들림 없이 정답을 도출하는 능력이 돋보입니다.</p>
+                <p>다만, 일부 문항에서 정답은 맞혔으나 원리 적용이 다소 미흡한 <b>'P(단순 계산)'</b> 판정이 나타났습니다. 이는 난이도가 높아지는 상위 과정에서 실수를 유발하는 원인이 될
+                    수 있으므로, <b>나눗셈의 수 분해</b> 및 <b>곱셈의 분배법칙</b> 활용 시 과정을 논리적으로 서술하는 연습을 병행한다면 완벽한 성취도를 기대할 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="feedback-title"> 문항별 상세 분석 </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;"> 번호/영역 </th>
+                            <th style="width: 20%; text-align: center;"> 결과 </th>
+                            <th> 상세 학습 분석 </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1-1 ~ 1-5 <br><small>연산의 기본 원리와 분해</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-p">P</span> / <span class="status-x">X</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span>
+                            </td>
+                            <td><b>보수 개념과 수 분해</b> 원리를 정확히 이해하고 있습니다. 10의 보수를 활용해 덧셈과 뺄셈을 효율적으로 처리하며, 곱셈식을 덧셈과 뺄셈의 조합으로
+                                분해하여 계산하는 수 감각이 매우 뛰어납니다.</td>
+
+
+                        </tr>
+                        <tr>
+                            <td> 1-6 ~ 1-7 <br><small>단위 체계와 큰 수의 이해</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-m">M</span> / <span class="status-o">O</span>
+                            </td>
+                            <td><b>단위 체계와 큰 수</b>의 구조를 완벽히 파악하고 있습니다. 자릿수에 따른 수의 크기 비교와 '만' 단위를 기준으로 한 큰 수 읽기가 능숙하며, 실생활
+                                단위(무게, 들이, 길이) 변환에 대한 이해도도 높습니다.</td>
+
+
+                        </tr>
+                        <tr>
+                            <td> 1-8, 1-9, 5, 7 <br><small>나눗셈의 원리와 수 분해</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-p">P</span> / <span class="status-p">P</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span>
+                            </td>
+                            <td><b>나눗셈의 원리와 수 분해</b> 과정에서 높은 이해도를 보였습니다. 단순히 몫을 구하는 것에 그치지 않고, 나눠지는 수를 분해하여 나머지를 처리하는
+                                논리적 연산 능력이 안정적입니다.</td>
+
+
+                        </tr>
+                        <tr>
+                            <td> 2-1 ~ 2-4, 6 <br><small>곱셈의 성질과 분배법칙</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-p">P</span> / <span
+                                    class="status-o">O</span> / <span class="status-p">P</span> / <span
+                                    class="status-o">O</span>
+                            </td>
+                            <td><b>곱셈의 성질과 분배법칙</b> 영역입니다. 정답은 모두 도출하였으나 일부 문항에서 원리 기반 풀이가 아닌 <b>단순 세로셈 위주의 풀이(P)</b>가
+                                관찰되었습니다. 수를 쪼개어 계산하는 분배법칙의 원리를 더욱 의식적으로 활용해 보길 권장합니다.</td>
+
+
+                        </tr>
+                        <tr>
+                            <td> 8 ~ 11 <br><small>배수와 소수의 정의</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-m">M</span> / <span class="status-o">O</span>
+                            </td>
+                            <td><b>배수와 소수의 정의</b>를 정확히 인지하고 있습니다. 수의 성질을 발견하여 규칙을 찾는 감각이 좋으나, 한 문항에서 <b>단순 계산 실수(M)</b>가
+                                발생했습니다. 풀이 과정의 마지막 단계에서 꼼꼼하게 검토하는 습관이 필요합니다.</td>
+
+
+                        </tr>
+                        <tr>
+                            <td> 3, 12, 10 <br><small>계산 법칙과 순서</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span>
+                            </td>
+                            <td><b>계산 법칙과 순서</b>를 완벽하게 준수합니다. 괄호가 포함된 복잡한 혼합 계산에서도 연산의 우선순위를 정확히 판단하여 정답을 도출하는 집중력이 매우
+                                우수합니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
+                ※ <b>O</b>: 정답 및 원리 활용 | <b>P</b>: 정답이나 단순 계산(원리 미흡) | <b>M</b>: 계산 실수 | <b>X</b>: 오답
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
