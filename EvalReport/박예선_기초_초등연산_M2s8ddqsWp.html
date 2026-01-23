@@ -4,12 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기초 분수소수 성취도 - 송시우 학생</title>
+    <title>기초 초등연산 성취도 - 박예선 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="박예선 학생 성취도 결과 리포트">
+    <meta property="og:description" content="기초 초등연산 과정에 대한 박예선 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop">
+
     <style>
         :root {
             --primary: #1e293b;
-            --accent: #4f46e5;
-            --accent-soft: #eef2ff;
+            --accent: #00A2FF;
+            --accent-soft: #E5F6FF;
             --bg-gray: #f1f5f9;
             --text-dark: #0f172a;
             --text-gray: #475569;
@@ -64,7 +71,7 @@
 
         .header-section .course-badge {
             display: inline-block;
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
             padding: 5px 14px;
             border-radius: 6px;
@@ -213,6 +220,51 @@
             font-weight: 800;
         }
 
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            background-color: #cbd5e1;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #334155;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
         .print-btn-float {
             position: fixed;
             bottom: 30px;
@@ -243,41 +295,44 @@
             <div class="header-section">
                 <span class="course-badge"> 초중등 수학전문 윈드수학학원 </span>
                 <h1> 성취도 평가 결과 리포트 </h1>
-                <div class="course-name"> 과정명: 기초 분수소수 </div>
-                <div class="student-info"> <strong> 송시우 </strong> 학생의 학습 분석 리포트입니다. </div>
+                <div class="course-name"> 과정명: 기초 초등연산 </div>
+                <div class="student-info"> <strong> 박예선 </strong> 학생의 학습 분석 리포트입니다. </div>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <span class="label"> 종합 점수 </span>
-                    <span class="value"> 50 </span>
+                    <span class="label"> 종합 점수 <span class="tooltip"><span class="tooltip-icon">?</span><span
+                                class="tooltip-text"> 문항별 배점 기준으로 100점 만점의 점수를 낸 것입니다. </span></span></span>
+                    <span class="value"> 78 </span>
                 </div>
                 <div class="stat-item">
                     <span class="label"> 성취 등급 </span>
-                    <span class="value"> 보통 </span>
+                    <span class="value"> 우수 </span>
                 </div>
                 <div class="stat-item">
                     <span class="label"> 풀이 시간 </span>
-                    <span class="value"> 50분 </span>
+                    <span class="value"> 40분 </span>
                 </div>
                 <div class="stat-item">
-                    <span class="label"> 원리 이행률 </span>
-                    <span class="value"> 70.00% </span>
+                    <span class="label"> 원리 이행률<span class="tooltip"><span class="tooltip-icon">?</span><span
+                                class="tooltip-text"> 전체 문항 중 원리 기반 정답 도출한 문항의 비중을 계산한 것입니다. </span></span> </span>
+                    <span class="value"> 86.96% </span>
                 </div>
             </div>
             <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
-                평가 일자: 2026년 1월 15일 (초4 과정)
+                평가 일자: 2026년 1월 22일
             </div>
         </div>
 
         <div class="card">
             <div class="feedback-title"> 종합 분석 피드백 </div>
             <div class="feedback-content">
-                <p>송시우 학생은 종합 점수 50점으로 <b>보통</b> 등급에 해당하며, 분수와 소수의 기초적인 개념은 형성되어 있으나 <b>복합 연산과 정확도</b> 면에서 보완이 필요합니다. 특히
-                    원리 이행률(70%)에 비해 종합 점수가 낮게 나타난 것은, 원리는 이해하고 있으나 실제 답을 도출하는 과정에서 실수가 잦음을 의미합니다.</p>
-                <p><b>분수의 대소 비교(그룹 2-1)</b>와 <b>단위 분수의 이해</b>는 양호하지만, <b>소수의 자리수 분해(1-1)</b>에서 발생한 연산 실수와 <b>복합 기호 삽입
-                        문제(그룹 3)</b>에서 상당수 오답이 발견되었습니다. 괄호가 포함된 식의 연산 순서를 지키는 훈련과 함께, 분수와 소수가 혼합된 식을 한 가지 형태로 통일하여 계산하는
-                    연습이 집중적으로 이루어져야 합니다. 앞으로는 정확한 식 작성과 검산 습관을 통해 <b>실수(M)</b>를 줄여나가는 것이 최우선 과제입니다.</p>
+                <p>박예선 학생은 이번 테스트에서 <b>86.96%라는 높은 원리 이행률</b>을 기록하며, 연산의 결과뿐만 아니라 과정을 도출하는 논리적 사고가 매우 우수함을 보여주었습니다. 종합
+                    점수에 비해 원리 이행률이 높다는 것은 기본기가 탄탄함을 의미하며, 발생한 오답의 대부분이 개념 부족보다는 <b>정밀도 부족</b>에서 기인한 것임을 알 수 있습니다.</p>
+
+                <p>다만, 40분의 풀이 시간 동안 <b>복수의 계산 실수(M)</b>와 특정 문항의 오답이 확인되었습니다. 이는 개념 이해도는 높으나 실전에서의 집중력 유지와 검산 루틴이 아직
+                    습관화되지 않았음을 시사합니다. 앞으로는 답을 맞히는 것에 안주하지 말고, <b>풀이 공간을 구획화</b>하여 적는 습관을 통해 사소한 실수를 방지하는 <b>정밀도 향상
+                        훈련</b>에 집중할 것을 권장합니다.
             </div>
         </div>
 
@@ -294,39 +349,69 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td> 1-1 ~ 1-2 <br><small>소수와 분수의 수 분해</small> </td>
+                            <td> 1-1 ~ 1-5 <br><small>연산의 기본 원리와 분해</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-m">M</span> / <span class="status-o">O</span>
+                                <span class="status-m">M</span> / <span class="status-o">O</span> / <span
+                                    class="status-x">X</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span>
                             </td>
-                            <td> <b>대분수를 자연수와 분수로 나누어 계산</b>하는 원리는 완벽히 이해하고 있습니다. 다만, 소수의 자리수를 덧셈식으로 분해하는 과정에서 단순 <b>연산
-                                    실수</b>가 발생하였습니다. </td>
+                            <td><b>보수 관계</b>와 <b>곱셈의 분해 법칙</b>을 활용한 수 분해 원리를 깊이 있게 이해하고 있습니다. 다만, 뺄셈의 <b>거리 개념</b>에서 일부
+                                오개념이 확인되므로 수직선을 활용한 원리 재학습이 필요하며, 단순 계산 실수를 방지하기 위한 정밀도 점검이 동반되어야 합니다.</td>
+
+
+
+
+
                         </tr>
                         <tr>
-                            <td> 2-1 ~ 2-6 <br><small>분수의 대소 비교 및 의미</small> </td>
+                            <td> 1-6 ~ 1-7 <br><small>단위 체계와 큰 수의 이해</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
-                                    class="status-o">O</span> / <span class="status-x">X</span> / <span
+                                <span class="status-o">O</span> / <span class="status-m">M</span>
+                            </td>
+                            <td><b>무게·들이·길이 단위</b>의 환산 원리는 완벽히 숙지하고 있습니다. 그러나 <b>다섯 자리 수</b>를 읽고 구분하는 과정에서 단순 실수가
+                                발견되었으므로, '만' 자리를 기준으로 수를 끊어 읽는 습관을 통해 실전에서의 정확도를 높여야 합니다.</td>
+                        </tr>
+                        <tr>
+                            <td> 1-8, 1-9, 5, 7 <br><small>나눗셈의 원리와 수 분해</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-m">M</span> / <span
                                     class="status-o">O</span> / <span class="status-o">O</span>
                             </td>
-                            <td> <b>분모가 같은 분수의 크기 비교</b>와 <b>단위 분수의 배수</b> 개념이 매우 탄탄합니다. 다만, '분수는 나눗셈이 수가 된 것'이라는 정의를
-                                활용하는 문항(2-4)에서 오답이 발생하여 개념 재정립이 필요합니다. </td>
+                            <td><b>나눠지는 수의 분해</b>와 몫이 갖는 <b>포함 횟수</b>의 의미를 정확히 파악하여 풀이에 적용하고 있습니다. 반복되는 계산 실수는 개념의 문제가
+                                아니므로, 최종 단계에서 몫과 나머지를 다시 한번 검토하는 <b>검산 루틴</b>이 보완된다면 완벽한 성취가 가능합니다.</td>
+
+
                         </tr>
                         <tr>
-                            <td> 3-1 ~ 3-4 <br><small>복합 연산 및 기호 삽입</small> </td>
+                            <td> 2-1 ~ 2-4, 6 <br><small>곱셈의 성질과 분배법칙</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-x">X</span> / <span class="status-x">X</span> / <span
-                                    class="status-x">X</span> / <span class="status-o">O</span>
+                                <span class="status-o">O</span> / <span class="status-m">M</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span>
                             </td>
-                            <td> <b>괄호 안의 연산을 우선</b>하는 원리는 인지하고 있으나, 분수와 소수가 섞여 있는 <b>복합 연산식에서 기호를 삽입</b>하여 식을 완성하는 논리적
-                                추론 과정에서 약점을 보이고 있습니다. </td>
+                            <td><b>반복 더하기로서의 곱셈</b> 원리와 큰 수를 분해하여 계산하는 기술이 매우 능숙합니다. 대부분의 문항에서 <b>원리 기반 풀이</b>가 훌륭하나, 특정
+                                문항에서 보인 실수는 식을 세우는 과정에서의 집중력 유지와 정교함이 더 필요함을 보여줍니다.</td>
+
+
                         </tr>
                         <tr>
-                            <td> 4-1 ~ 4-2 <br><small>분수의 덧셈과 뺄셈</small> </td>
+                            <td> 8 ~ 11 <br><small>배수와 소수의 정의</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-m">M</span> / <span class="status-o">O</span>
+                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span>
                             </td>
-                            <td> <b>분모가 같은 대분수의 뺄셈</b> 원리는 정확히 파악하고 있으나, 받아내림이 있는 연산 등에서 <b>정확도(M)</b>를 높이는 반복 훈련이 수반되어야
-                                합니다. </td>
+                            <td>해당 영역의 핵심인 <b>자연수의 배수 관계</b>와 <b>약수가 2개뿐인 소수</b>의 정의를 완벽히 이해하고 있습니다. 원리의 개념 정립이 탄탄하여 이를
+                                실제 문제 해결 상황에 매우 능숙하게 활용하고 있는 단계입니다.</td>
+
+
+                        </tr>
+                        <tr>
+                            <td> 3, 12, 10 <br><small>계산 법칙과 순서</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span>
+                            </td>
+                            <td><b>괄호 우선 계산</b> 원칙과 덧셈의 <b>교환법칙</b>을 정확히 인지하고 있습니다. 복합적인 연산 상황에서도 연산의 순서를 체계적으로 지키며
+                                안정적으로 정답을 도출해내는 능력이 확인됩니다.</td>
                         </tr>
                     </tbody>
                 </table>

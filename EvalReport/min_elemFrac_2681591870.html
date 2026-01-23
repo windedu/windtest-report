@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 기초 분수소수 성취도 - 민제언 학생 </title>
+    <title>기초 분수소수 성취도 - 민제언 학생</title>
     <style>
         :root {
             --primary: #1e293b;
@@ -157,10 +157,6 @@
             color: #334155;
         }
 
-        .feedback-content p {
-            margin-bottom: 20px;
-        }
-
         .feedback-content b {
             color: var(--accent);
             font-weight: 700;
@@ -202,8 +198,13 @@
             font-weight: 800;
         }
 
-        .status-triangle {
+        .status-p {
             color: #f59e0b;
+            font-weight: 800;
+        }
+
+        .status-m {
+            color: #a855f7;
             font-weight: 800;
         }
 
@@ -227,31 +228,12 @@
             box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.4);
             cursor: pointer;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        @media print {
-            .print-btn-float {
-                display: none;
-            }
-
-            .container {
-                width: 210mm;
-            }
-
-            .card {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                margin-bottom: 40px;
-            }
         }
     </style>
 </head>
 
 <body>
+
     <button class="print-btn-float no-print" onclick="window.print()">
         <span> PDF 리포트 저장 및 인쇄 </span>
     </button>
@@ -268,33 +250,35 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="label"> 종합 점수 </span>
-                    <span class="value"> 72 </span>
+                    <span class="value"> 70 </span>
                 </div>
                 <div class="stat-item">
                     <span class="label"> 성취 등급 </span>
                     <span class="value"> 우수 </span>
                 </div>
                 <div class="stat-item">
-                    <span class="label"> 원리 이행률 </span>
-                    <span class="value"> 76.00% </span>
-                </div>
-                <div class="stat-item">
-                    <span class="label"> 풀이 속도 </span>
+                    <span class="label"> 풀이 시간 </span>
                     <span class="value"> 45분 </span>
                 </div>
+                <div class="stat-item">
+                    <span class="label"> 원리 이행률 </span>
+                    <span class="value"> 78.00% </span>
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
+                평가 일자: 2026년 1월 15일 (초5 과정)
             </div>
         </div>
 
         <div class="card">
-            <div class="feedback-box">
-                <div class="feedback-title"> 종합 분석 피드백 </div>
-                <div class="feedback-content">
-                    <p>민제언 학생은 기초 분수소수 과정에서 <b>72점</b>의 우수한 성적을 거두었습니다. 특히 <b>단위 분수의 배수 개념</b> 및 <b>분수와 소수의 실생활 활용</b>
-                        영역에서 100%의 정답률을 보이며 뛰어난 응용력을 입증했습니다.</p>
-                    <p>다만, <b>복합 연산의 구조적 이해</b>와 <b>통분/약분의 원리</b> 부분에서 일부 취약점이 발견되었습니다. 연산 기호를 삽입하거나 식을 완성하는 과정에서 실수가
-                        발생했으며, 특히 가분수와 대분수의 변환 및 나머지가 있는 나눗셈을 분수로 나타내는 과정(4-1번)에서 개념 보강이 필요합니다. 이러한 부분들을 집중적으로 훈련한다면 상위
-                        과정인 심화 연산에서도 탁월한 성과를 보일 것으로 판단됩니다.</p>
-                </div>
+            <div class="feedback-title"> 종합 분석 피드백 </div>
+            <div class="feedback-content">
+                <p>민제언 학생은 종합 점수 70점으로 <b>우수</b> 등급의 성취를 달성했습니다. 분수와 소수의 기본 개념을 수 분해 원리와 연결하여 이해하고 있으며, 특히 <b>소수와 대분수의 수
+                        분해(그룹 1)</b> 영역에서 매우 안정적인 실력을 보여주었습니다.</p>
+                <p>전반적으로 <b>분수의 크기 비교와 단위 분수의 이해(그룹 2)</b>가 우수하여 분량에 대한 감각이 뛰어납니다. 다만, <b>복합 연산 기호 삽입 문제(3-1, 3-2)</b>에서
+                    발생한 오답은 괄호의 유무에 따른 연산 순서 변화를 한 번 더 점검할 필요가 있음을 시사합니다. 또한, <b>분수의 뺄셈(4-2)</b>에서 나타난 오답은 받아내림이 있는 대분수
+                    연산에서의 정밀도를 높여야 함을 보여줍니다. 논리적인 식 구성 능력이 좋으므로, 복잡한 조건이 포함된 문항에서도 차분히 식을 세우는 연습을 지속한다면 최상위 성취를 기대할 수
+                    있습니다.</p>
             </div>
         </div>
 
@@ -305,68 +289,48 @@
                     <thead>
                         <tr>
                             <th style="width: 25%;"> 번호/영역 </th>
-                            <th style="width: 22%; text-align: center;"> 결과 </th>
+                            <th style="width: 20%; text-align: center;"> 결과 </th>
                             <th> 상세 학습 분석 </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1-1, 1-2, 5, 14<br><small>수 분해와 최적화</small></td>
+                            <td> 1-1 ~ 1-2 <br><small>소수와 분수의 수 분해</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
-                                    class="status-x">X</span> / <span class="status-x">X</span>
+                                <span class="status-o">O</span> / <span class="status-o">O</span>
                             </td>
-                            <td>소수의 자릿수 분해와 대분수 계산 원리는 잘 숙지하고 있으나, 수의 결합 법칙을 활용한 계산 최적화 및 기하학적 수 분해(14번)에 대한 이해도가 보완되어야
-                                합니다.</td>
+                            <td> <b>소수의 자리수 분해</b> 및 <b>대분수를 자연수와 분수로 나누어 계산</b>하는 원리를 완벽하게 숙달하고 있습니다. </td>
                         </tr>
                         <tr>
-                            <td>2-1, 2-5, 6, 8<br><small>분수 대소 비교</small></td>
+                            <td> 2-1 ~ 2-6 <br><small>분수의 대소 비교 및 의미</small> </td>
                             <td style="text-align: center;">
                                 <span class="status-o">O</span> / <span class="status-o">O</span> / <span
-                                    class="status-x">X</span> / <span class="status-o">O</span>
-                            </td>
-                            <td>분자가 같은 분수의 대소 비교 원리는 명확히 알고 있습니다. 다만, 분수와 자연수의 크기를 직관적으로 비교하거나 기준수(1)를 활용한 논리적 추론(6번)
-                                훈련이 더 필요합니다.</td>
-                        </tr>
-                        <tr>
-                            <td>2-2, 10, 12, 13<br><small>단위 및 활용</small></td>
-                            <td style="text-align: center;">
-                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span> / <span
                                     class="status-o">O</span> / <span class="status-o">O</span>
                             </td>
-                            <td>'~의 분수만큼'이라는 표현의 의미를 정확히 파악하고 있습니다. 단위 분수의 배수 관계를 활용한 실생활 문제 해결 능력이 매우 우수합니다.</td>
+                            <td> <b>단위 분수의 배수</b>로서의 분수 개념이 명확하며, <b>분모가 같을 때의 대소 관계</b> 및 <b>중간값을 이용한 곱셈</b> 유형을 모두 정확히
+                                해결했습니다. </td>
                         </tr>
                         <tr>
-                            <td>2-3, 2-4, 4-1, 4-2, 9<br><small>분수-나눗셈 관계</small></td>
+                            <td> 3-1 ~ 3-4 <br><small>복합 연산 및 기호 삽입</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
-                                    class="status-triangle">△</span> / <span class="status-o">O</span> / <span
-                                    class="status-o">O</span>
+                                <span class="status-x">X</span> / <span class="status-x">X</span> / <span
+                                    class="status-o">O</span> / <span class="status-o">O</span>
                             </td>
-                            <td>분수가 나눗셈이 수가 된 것이라는 핵심 개념은 인지하고 있습니다. 다만, 나눗셈의 몫을 대분수로 나타낼 때(4-1) 연산의 정확도를 높일 필요가 있습니다.
-                            </td>
+                            <td> <b>괄호 안의 연산 우선순위</b>는 인지하고 있으나, 적절한 연산 기호를 삽입하여 식을 완성하는 논리적 퍼즐 유형에서 보완이 필요합니다. </td>
                         </tr>
                         <tr>
-                            <td>3-1 ~ 3-5<br><small>복합 연산 및 기호</small></td>
+                            <td> 4-1 ~ 4-2 <br><small>분수의 덧셈과 뺄셈</small> </td>
                             <td style="text-align: center;">
-                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span
-                                    class="status-o">O</span> / <span class="status-x">X</span> / <span
-                                    class="status-o">O</span>
+                                <span class="status-o">O</span> / <span class="status-x">X</span>
                             </td>
-                            <td>괄호를 포함한 복합 연산의 순서를 잘 지킵니다. 하지만 분수와 소수가 혼합된 식에서 연산 기호를 유추하는 과정(3-4)에서 보다 신중한 분석이 요구됩니다.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2-6, 7, 11<br><small>심화 원리 및 변환</small></td>
-                            <td style="text-align: center;">
-                                <span class="status-triangle">△</span> / <span class="status-x">X</span> / <span
-                                    class="status-o">O</span>
-                            </td>
-                            <td>분수와 소수의 상호 변환은 능숙합니다. 다만 통분의 기초가 되는 수의 성질 이해(7번)와 중간값을 활용한 곱셈 유형(2-6)은 추가 학습이 권장됩니다.
-                            </td>
+                            <td> <b>분모가 같은 대분수의 덧셈</b>은 능숙하지만, <b>뺄셈(4-2)</b> 과정에서 수의 크기 변화를 놓친 것으로 보입니다. </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
+                ※ <b>O</b>: 정답 및 원리 활용 | <b>P</b>: 정답이나 단순 계산(원리 미흡) | <b>M</b>: 계산 실수 | <b>X</b>: 오답
             </div>
         </div>
     </div>

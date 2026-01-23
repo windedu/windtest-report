@@ -197,18 +197,33 @@
             line-height: 1.5;
         }
 
+        /* 1. 정답 (Correct): 신뢰와 성취를 상징하는 브랜드 컬러(Indigo/Blue) */
         .status-o {
             color: var(--accent);
+            /* 기존 #4f46e5 계열 */
             font-weight: 800;
         }
 
-        .status-triangle {
+        /* 2. 원리 미흡 (Process): '주의'가 필요한 상태. 
+      답은 맞았으므로 노란색 계열을 유지하되 가독성을 위해 진한 주황빛 적용 */
+        .status-p {
             color: #f59e0b;
+            /* Amber 500 */
             font-weight: 800;
         }
 
+        /* 3. 연산 실수 (Mistake): 실수는 '아쉬움'을 상징. 
+      완전한 오답(Red)과는 차별화된 보라/자주색 계열로 '교정 가능성'을 표현 */
+        .status-m {
+            color: #a855f7;
+            /* Purple 500 */
+            font-weight: 800;
+        }
+
+        /* 4. 개념 결손 (Incorrect): 즉각적인 재학습이 필요한 오답. 경고를 의미하는 빨간색 */
         .status-x {
             color: #ef4444;
+            /* Red 500 */
             font-weight: 800;
         }
 
@@ -367,7 +382,7 @@
                 </table>
             </div>
             <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
-                ※ ○: 정답 및 원리 적용 | △: 답은 맞으나 원리 미적용 | X: 오답
+                ※ O: 정답 및 원리 활용 | P: 정답이나 단순 계산(원리 미흡) | M: 계산 실수 | X: 오답 및 원리 재학습 필요
             </div>
         </div>
 
