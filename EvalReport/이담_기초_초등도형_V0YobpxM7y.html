@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 초등도형 성취도 - 이담 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="이담 기초 초등도형 테스트 리포트">
+    <meta property="og:description" content="기초 초등도형 과정에 대한 이담 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1000&auto=format&fit=crop">
+
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #FFD932;
+            --accent-soft: #FFF9E0;
+            --bg-gray: #f1f5f9;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-gray);
+            word-break: keep-all;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-section {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .header-section .course-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .header-section h1 {
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            margin: 0 0 16px 0;
+            font-weight: 800;
+        }
+
+        .header-section .course-name {
+            display: block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 5px;
+        }
+
+        .header-section .student-info {
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .header-section .student-info strong {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-soft);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: var(--white);
+            padding: 18px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-item .label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-item .value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .feedback-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .feedback-content {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #334155;
+        }
+
+        .feedback-content b {
+            color: var(--accent);
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-soft);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 550px;
+            background: var(--white);
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--text-gray);
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 16px 12px;
+            border-bottom: 1px solid var(--border);
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .status-o {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .status-p {
+            color: #f59e0b;
+            font-weight: 800;
+        }
+
+        .status-m {
+            color: #a855f7;
+            font-weight: 800;
+        }
+
+        .status-x {
+            color: #ef4444;
+            font-weight: 800;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            background-color: #cbd5e1;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #334155;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 리포트 저장 및 인쇄 </span>
+    </button>
+
+    <div class="container">
+        <div class="card">
+            <div class="header-section">
+                <span class="course-badge"> 초중등 수학전문 윈드수학학원 </span>
+                <h1> 성취도 평가 결과 리포트 </h1>
+                <div class="course-name"> 과정명: 기초 초등도형 </div>
+                <div class="student-info"> <strong> 이담 </strong> 학생의 학습 분석 리포트입니다. </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="label"> 종합 점수 <span class="tooltip"><span class="tooltip-icon">?</span><span
+                                class="tooltip-text"> 문항별 배점 기준으로 100점 만점의 점수를 낸 것입니다. </span></span></span>
+                    <span class="value"> 45 </span>
+                </div>
+                <div class="stat-item">
+                    <span class="label"> 성취 등급 </span>
+                    <span class="value"> 기초 </span>
+                </div>
+                <div class="stat-item">
+                    <span class="label"> 풀이 시간 </span>
+                    <span class="value"> 60분 </span>
+                </div>
+                <div class="stat-item">
+                    <span class="label"> 원리 이행률<span class="tooltip"><span class="tooltip-icon">?</span><span
+                                class="tooltip-text"> 전체 문항 중 원리 기반 정답 도출한 문항의 비중을 계산한 것입니다. </span></span> </span>
+                    <span class="value"> 47.06% </span>
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 10px;">
+                평가 일자: 2026년 2월 5일
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="feedback-title"> 종합 분석 피드백 </div>
+            <div class="feedback-content">
+                <p>이담 학생은 종합점수 45점으로 현재 <b>기초 단계</b>의 성취도를 보이고 있습니다. 원리이행률이 47.06%로 나타나, 도형의 <b>기초 정의와 성질</b>을 문제에 적용하는 과정에서 <b>개념 미정립(X)</b>으로 인한 오답이 다수 발생하였습니다. 학습 태도 측면에서 60분간 끈기 있게 임했으나, <b>도형의 시각화</b>와 성질의 논리적 연결을 위한 집중적인 훈련이 필요합니다.</p><p>향후 <b>평면도형의 기본 요소</b>부터 다각형의 넓이와 성질까지 계통적인 학습이 필요합니다. 특히 정답을 맞힌 문항에서도 <b>원리 기반의 풀이</b>를 강화하여 우수 정답(O)의 비중을 높여야 합니다. <b>분배법칙</b>이나 <b>비례 성질</b> 등 수 연산과 도형 개념을 결합하는 연습을 통해 <b>수학적 사고의 유연성</b>을 기르는 것이 다음 단계로 도약하기 위한 핵심 과제입니다.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="feedback-title"> 문항별 상세 분석 </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;"> 번호/영역 </th>
+                            <th style="width: 20%; text-align: center;"> 결과 </th>
+                            <th> 상세 학습 분석 </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1, 2 <br><small>선분과 각의 기초 측정</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-x">X</span> / <span class="status-x">X</span>
+                            </td>
+                            <td><b>일직선상 선분 찾기</b>와 <b>체계적 수세기</b> 과정에서 누락이 발생하여 <b>길이 합 연산</b>의 정확도가 낮습니다. 또한 <b>시계 눈금 사이 각도</b>와 시침·분침의 <b>비례 관계</b>에 대한 개념 정립이 필요합니다. 기본적인 <b>단위 각도</b> 이해를 바탕으로 각의 크기를 <b>분해</b>하고 결합하는 원리 재학습이 필요합니다.</td>
+                        </tr>
+                        <tr>
+                            <td> 3, 4, 5, 6 <br><small>삼각형의 성질과 결정 조건</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-x">X</span> / <span class="status-x">X</span> / <span class="status-x">X</span>
+                            </td>
+                            <td><b>삼각형 내각의 합</b>과 <b>곱셈의 의미</b>를 활용한 식 만들기는 우수하나, <b>삼각형 결정조건</b>에 따른 <b>체계적 수세기</b>에서 오개념이 확인됩니다. 이등변 및 정삼각형의 성질을 활용한 <b>정보 시각화</b>와 선분 연장을 통한 <b>도형 구성 능력</b> 보완이 필요합니다. <b>도형의 정의</b>를 명확히 하고 이를 문제 의도에 맞춰 적용하는 연습이 필요합니다.</td>
+                        </tr>
+                        <tr>
+                            <td> 7, 8, 9, 11, 12 <br><small>다각형 및 사각형의 성질 활용</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-o">O</span> / <span class="status-o">O</span> / <span class="status-o">O</span> / <span class="status-o">O</span>
+                            </td>
+                            <td>여러 <b>특수도형의 성질</b>을 복합적으로 활용하여 정보를 추출하는 능력이 매우 우수하며 <b>핵심 의도</b>를 완벽히 이해하고 있습니다. <b>평행사변형 대각선 성질</b>과 <b>분배법칙</b> 활용, <b>연립식 형태의 수감각</b>, <b>비례배분</b>을 이용한 선분 길이 구하기 등 <b>비례 성질</b>에 대한 높은 이해도를 바탕으로 복잡한 연산도 정확하게 수행한 점이 칭찬할 만합니다.</td>
+                        </tr>
+                        <tr>
+                            <td> 10, 13, 14, 16 <br><small>도형의 넓이와 비례 관계</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-x">X</span> / <span class="status-x">X</span> / <span class="status-o">O</span> / <span class="status-x">X</span>
+                            </td>
+                            <td><b>도형 넓이 쪼개기</b>와 <b>분배법칙</b> 적용은 원활하나, <b>높이가 같은 삼각형의 넓이비</b>와 <b>등적변형</b> 원리에서 <b>개념 미정립</b>이 관찰됩니다. <b>분수의 의미</b>를 활용한 도형 분할과 <b>마름모 공식</b>을 활용한 정사각형 넓이 구하기 등 <b>공식의 유연한 적용</b>이 필요합니다. 넓이의 <b>비례적 성질</b>을 시각적으로 이해하는 훈련이 필요합니다.</td>
+                        </tr>
+                        <tr>
+                            <td> 15, 17 <br><small>다각형의 각과 심화 기하</small> </td>
+                            <td style="text-align: center;">
+                                <span class="status-o">O</span> / <span class="status-x">X</span>
+                            </td>
+                            <td><b>다각형의 내외각 성질</b>을 이용해 각을 <b>쪼개어 생각하는 사고력</b>은 우수하나, <b>원의 성질</b>을 삼각형과 연결하는 능력이 다소 부족합니다. <b>반지름</b>이 일정하다는 원리를 통해 <b>이등변삼각형</b>을 발견하고 성질을 활용하는 연습이 필요합니다. 원과 다각형이 결합된 형태에서 <b>보조선</b>을 활용해 숨겨진 정보를 찾는 <b>원리 학습</b>이 필요합니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px; text-align: right;">
+                ※ <b>O</b>: 정답 및 원리 활용 | <b>P</b>: 정답이나 단순 계산(원리 미흡) | <b>M</b>: 계산 실수 | <b>X</b>: 오답
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
