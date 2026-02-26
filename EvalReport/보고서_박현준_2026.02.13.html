@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 박현준 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="박현준 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 박현준 학생의 상세 학습 분석 리포트입니다.">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">3학년_1학기_중간고사_목동중_2022</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">박현준</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.02.13</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">87<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">19<span
+                        class="text-base text-slate-400 font-normal"> / 22</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">제곱근과 실수</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (전문가 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                종합 평가를 생성할 수 없습니다. (API 키 누락)
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <div class="report-card p-5 col-span-1 md:col-span-2">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+                
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">2번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">다음 중 수의 대소 관계가 옳은 것은?<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$\sqrt{7}-\sqrt{10}< 2\sqrt{2}-3$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$7-\sqrt{3}>3\sqrt{3}+1$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$-\dfrac{1}{\sqrt{3}}>-\dfrac{1}{\sqrt{5}}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$\sqrt{10}+1<4$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$\dfrac{1}{6}>\sqrt{\dfrac{1}{6}}$</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">실수의 대소 관계</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">7번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">그림과 같이 세 종류의 직사각형 12개를 겹치지 않게 이어붙여 새로운 직사각형을 만들었다. 새로 만든 직사각형의 둘레의 길이는?<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$2x+6$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$2x+7$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$4x+10$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$4x+12$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$4x+14$</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">인수분해의 활용(도형)</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">15번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">그림과 같이 한 변의 길이가 $a\text{ cm}$ 인 정사각형 ABCD를 직선 위에 미끄러지지 않게 한 바퀴 굴렸을 때, 점 B가 움직인 거리가 $(2-\sqrt{2})\pi\text{ cm}$ 라 한다. 이 때 $a$ 의 값은?<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$3-2\sqrt{2}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$6-4\sqrt{2}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$2$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$3+2\sqrt{2}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$6+4\sqrt{2}$</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">제곱근의 활용(도형)</span>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+        
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\ub2e4\ud56d\uc2dd\uc758 \uacf1\uc148\uacfc \uc778\uc218\ubd84\ud574", "\uc81c\uacf1\uadfc\uacfc \uc2e4\uc218"],
+            datasets: [{
+                label: '문항 수',
+                data: [9, 13],
+            backgroundColor: 'rgba(102, 77, 0, 0.6)',
+            borderColor: 'rgb(102, 77, 0)',
+            borderWidth: 1,
+            borderRadius: 4
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { stepSize: 1 }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [0, 0, 16, 3, 0]
+        }
+        }
+        },
+            backgroundColor: '#664D00',
+            borderRadius: 2
+                    },
+            {
+                label: '오답',
+                data: [0, 0, 2, 1, 0],
+            backgroundColor: '#b35a5a',
+            borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                }
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
