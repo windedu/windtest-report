@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 김도훈 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="김도훈 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 김도훈 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TikZJax: browser-side TikZ rendering -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">1학년_1학기_단원평가_정수와유리수</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">김도훈</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.03.27</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">92<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">23<span class="text-base text-slate-400 font-normal"> /
+                        25</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">정수와 유리수의 곱셈과 나눗셈</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (AI 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                <p>김도훈 학생, 안녕하세요! '정수와 유리수' 단원평가에서 92점이라는 아주 훌륭한 성적을 거둔 것을 진심으로 축하합니다. 이 점수는 도훈 학생이 해당 단원의 개념들을 깊이 이해하고,
+                    다양한 문제 해결 능력 또한 갖추고 있음을 명확히 보여줍니다.</p>
+
+                <p>도훈 학생은 특히 <b>정수와 유리수의 개념 체계</b>를 명확히 파악하고 있어, 수의 분류나 실생활에서의 부호 사용 문제를 정확하게 해결했습니다. 또한, '크지 않다', '작지
+                    않다'와 같은 <b>조건 표현을 수학적 부등호로 정확히 변환</b>하는 능력도 매우 뛰어납니다. 여러 개념이 복합적으로 적용되는 <b>복잡한 혼합 계산 문제</b>에서도 거듭제곱,
+                    괄호, 사칙연산의 우선순위를 완벽하게 지켜내며 오류 없이 답을 도출했습니다. 이는 도훈 학생이 단순히 계산 능력이 뛰어날 뿐만 아니라, 문제 해결의 전체적인 흐름을 이해하고
+                    계획적으로 접근한다는 증거입니다. <b>절댓값을 활용한 심화 문제</b>나 덧셈과 곱셈의 <b>교환법칙 및 결합법칙</b>을 정확히 구별하는 문제까지 성공적으로 맞힌 것을 보면,
+                    기본적인 개념을 넘어 응용 및 심화 개념까지 탄탄하게 다져져 있음을 알 수 있습니다. 이처럼 높은 수준의 이해도와 분석력을 보여준 점은 매우 인상 깊습니다.</p>
+
+                <p>다만, 몇몇 문항에서 아쉬운 점이 발견되었습니다. 3번 문항에서는 <b>수직선 위에서 두 점 사이의 거리</b>를 구하는 방법(두 수의 차이의 절댓값)과 <b>두 수의 한가운데
+                        점</b>을 찾는 개념(두 수의 평균)을 다시 한번 확인해 보면 좋겠습니다. 수직선은 정수와 유리수의 개념을 시각적으로 이해하는 데 매우 중요한 도구이므로, 이 부분의 기본
+                    원리를 확실히 다져두면 다른 단원 학습에도 큰 도움이 될 것입니다. 그리고 23번 문항은 <b>-1과 0 사이의 유리수</b>에 대한 심층적인 이해가 필요한 문제였습니다. 특히
+                    음수이면서 절댓값이 1보다 작은 수(-1 < a < 0)가 제곱, 세제곱 또는 역수되었을 때 값의 부호와 크기가 어떻게 변하는지, 그리고 이로 인해 대소 관계가 어떻게 달라지는지에
+                        대한 <b>정확한 이해</b>가 필요합니다. 예를 들어 a=-1/2과 같은 구체적인 수를 대입하여 a, a², a³, 1/a의 값을 직접 비교해보면서 그 변화를 관찰하는
+                        연습을 해보면 개념을 더욱 명확히 할 수 있을 것입니다. 이 두 가지 개념은 이후 이차방정식이나 부등식 등에서 수의 특성을 이해하는 데 필수적인 요소이니, 이번 기회에
+                        꼼꼼하게 복습해두면 좋겠습니다.</p>
+
+                <p>도훈 학생은 이번 평가에서 대부분의 개념을 완벽하게 이해하고 있음을 입증했습니다. 위에서 언급한 두 가지 개념에 대해 추가적인 학습과 연습이 이루어진다면, 더욱 빈틈없는 수학 실력을
+                    갖추게 될 것입니다. 지금처럼 꾸준히 노력하면 앞으로도 훌륭한 성취를 이룰 것이라 확신합니다. 정말 잘했습니다!</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+
+            <div class="report-card p-5">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">영역별 성취도</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="report-card p-5 ">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+
+
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">3번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">수직선 위에서 $-8$과 $2$에 대응하는
+                        점의 한가운데에 있는 점에 대응하는 수를 구하여라.</div>
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">수직선</span>
+
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">두 점 사이의 거리와
+                            중점</span>
+
+                    </div>
+                </div>
+
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">23번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">$-1 &lt; a &lt; 0$일 때,
+                        가장 큰 수는?<ul
+                            style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;">
+                            <li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$a^2$</li>
+                            <li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$(-a)^3$</li>
+                            <li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$-a$</li>
+                            <li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$a$</li>
+                            <li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$\dfrac{1}{a^2}$</li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">범위 내의 거듭제곱/역수의
+                            대소 관계</span>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ["\uc815\uc218\uc640 \uc720\ub9ac\uc218", "\ud63c\ud569 \uacc4\uc0b0 \ubc0f \ud65c\uc6a9", "\uc815\uc218\uc640 \uc720\ub9ac\uc218\uc758 \uacf1\uc148\uacfc \ub098\ub217\uc148", "\uc815\uc218\uc640 \uc720\ub9ac\uc218\uc758 \ub367\uc148\uacfc \ube84\uc148"],
+                datasets: [{
+                    label: '성취도 (%)',
+                    data: [88.9, 100.0, 83.3, 100.0],
+                    fill: true,
+                    backgroundColor: 'rgba(102, 77, 0, 0.1)',
+                    borderColor: 'rgb(102, 77, 0)',
+                    pointBackgroundColor: 'rgb(102, 77, 0)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(102, 77, 0)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0,0,0,0.05)' },
+                        grid: { color: 'rgba(0,0,0,0.05)' },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false, backdropColor: 'transparent' },
+                        pointLabels: {
+                            font: { size: 11, weight: '500' },
+                            color: '#334155'
+                        }
+                    }
+                }
+            }
+        });
+
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\uc815\uc218\uc640 \uc720\ub9ac\uc218", "\ud63c\ud569 \uacc4\uc0b0 \ubc0f \ud65c\uc6a9", "\uc815\uc218\uc640 \uc720\ub9ac\uc218\uc758 \uacf1\uc148\uacfc \ub098\ub217\uc148", "\uc815\uc218\uc640 \uc720\ub9ac\uc218\uc758 \ub367\uc148\uacfc \ube84\uc148"],
+                datasets: [{
+                    label: '문항 수',
+                    data: [9, 4, 6, 6],
+                    backgroundColor: 'rgba(102, 77, 0, 0.6)',
+                    borderColor: 'rgb(102, 77, 0)',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { stepSize: 1 }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [2, 0, 19, 2, 0],
+                        backgroundColor: '#664D00',
+                        borderRadius: 2
+                    },
+                    {
+                        label: '오답',
+                        data: [0, 0, 2, 0, 0],
+                        backgroundColor: '#b35a5a',
+                        borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: { display: false }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: { stepSize: 1 },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
