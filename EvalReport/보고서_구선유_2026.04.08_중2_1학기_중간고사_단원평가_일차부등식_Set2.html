@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 구선유 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="구선유 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 구선유 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TikZJax: browser-side TikZ rendering -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">중2_1학기_중간고사_단원평가_일차부등식_Set2</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">구선유</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.04.08</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">70<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">14<span
+                        class="text-base text-slate-400 font-normal"> / 20</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">일차부등식의 활용 (수와 도형)</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (AI 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                <p>선유 학생, 이번 '일차부등식' 단원평가를 치르느라 고생 많았습니다. 선유 학생은 난이도가 높은 <b>연립일차부등식의 복합적인 풀이</b>와 <b>수직선을 활용하여 정수의 개수에 따른 미지수의 범위</b>를 구하는 까다로운 유형들을 아주 훌륭하게 해결해냈습니다. 특히 농도 문제나 예금액 변화와 같은 <b>실생활 문장제 문제</b>에서 식을 정확하게 세우고 답을 도출하는 능력이 매우 뛰어납니다. 이는 문제의 의도를 정확히 파악하고 수학적 모델링을 수행하는 논리적 사고력이 잘 갖춰져 있음을 보여주는 아주 긍정적인 신호입니다.</p>
+
+<p>다만, 몇 가지 특정 개념에서 보완이 이루어진다면 더욱 완벽한 성취를 이룰 수 있습니다. 먼저 <b>부등식의 성질</b> 중 미지수의 계수가 음수일 때 <b>부등호의 방향이 바뀌는 부분</b>(11번)에 대한 주의가 필요합니다. 계수의 부호를 판단할 때 조건($a+4 < 0$)을 끝까지 확인하는 습관을 기르면 좋겠습니다. 또한, <b>도형의 넓이와 겹치는 부분</b>(18번)이나 <b>원가와 이익</b>(7번) 문제처럼 조건이 복잡한 응용 문항에서는 최종 결과값의 범위를 구한 뒤 문제에서 요구하는 <b>자연수 조건이나 올림 처리</b>를 한 번 더 검토하는 정교함이 필요합니다.</p>
+
+<p>앞으로는 <b>자연수 조건이 포함된 부등식의 해</b>를 구할 때 식의 값의 범위를 먼저 설정한 후 조건을 만족하는 값을 찾는 연습과, 연속하는 홀수나 도형 문제에서 <b>미지수를 설정하고 인수분해 등 식을 간략화하는 과정</b>에 집중해 보세요. 선유 학생은 이미 높은 난이도의 문제들을 풀어낼 수 있는 충분한 잠재력을 가지고 있으므로, 이러한 세밀한 부분들만 보완한다면 다음 평가에서는 훨씬 더 자신감 있게 모든 문제를 해결할 수 있을 것입니다. 선유 학생의 논리적인 분석력을 믿고 계속 정진하길 응원합니다!</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <div class="report-card p-5">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">영역별 성취도</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="report-card p-5 ">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+                
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">15번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">$3x-2 \le 5$일 때, $\dfrac{3x-1}{2}$의 값이 자연수가 되도록 하는 모든 $x$의 값의 합을 구하여라.</div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">자연수 조건</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">해의 범위</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">정수 $x$</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">11번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">$a+4&lt;0$일 때, 부등식 $-ax+12&lt;4x-3a$를 풀어라. (단, $a$는 상수)</div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">미지수 계수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">부등호 방향</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">상수</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">17번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">연속하는 세 홀수 $a, b, c(a&gt;b&gt;c)$에 대하여 $68 \le ab-bc \le 72$가 성립할 때, $a+b+c$의 값을 구하여라.</div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">연속하는 홀수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">부등식</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">인수분해</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">정수론</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">7번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">어느 샌드위치 전문점에서 샌드위치 1개당 3500원에 팔고 있다. 샌드위치 1개당 원가는 1200원이고, 한 달 동안 드는 경비가 50만 원일 때, 한 달 동안의 이익이 800만 원 이상이 되기 위해서는 한 달 동안 최소한 몇 개의 샌드위치를 만들어야 하는지 구하여라. (단, 만든 샌드위치는 모두 팔린다.)</div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식의 활용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">이익</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">원가</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">판매가</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">경비</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">올림</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">3번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">어느 복사집에서 3장을 복사하는 데 드는 비용은 400원이고, 더 복사할 때마다 한 장에 80원씩 추가된다고 한다. 복사 1장당 100원 이하가 되게 하려면 몇 장 이상 복사해야 하는지 구하여라.</div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식의 활용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">복사 비용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">평균 비용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">실생활 문제</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">18번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">가로의 길이가 7 cm, 세로의 길이가 5 cm인 직사각형 모양의 종이를 다음 그림과 같이 가로가 2 cm만큼 겹치도록 이어 붙여 큰 직사각형을 만들려고 한다. 큰 직사각형의 넓이가 245 cm$^2$ 이상이 되도록 할 때, 최소 몇 장의 종이를 붙여야 하는지 구하여라.<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식의 활용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">도형의 넓이</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">겹치는 부분</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">직사각형</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">올림</span>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+        
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ["\ud574\uc758 \uc870\uac74\uc774 \uc8fc\uc5b4\uc9c4 \uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc5f0\ub9bd\uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud65c\uc6a9 (\uc2e4\uc0dd\ud65c\uacfc \ub18d\ub3c4)", "\ubd80\ub4f1\uc2dd\uc758 \uc131\uc9c8\uacfc \ud480\uc774", "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud65c\uc6a9 (\uc218\uc640 \ub3c4\ud615)"],
+            datasets: [{
+                label: '성취도 (%)',
+                data: [83.3, 100.0, 66.7, 66.7, 33.3],
+            fill: true,
+            backgroundColor: 'rgba(102, 77, 0, 0.1)',
+            borderColor: 'rgb(102, 77, 0)',
+            pointBackgroundColor: 'rgb(102, 77, 0)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(102, 77, 0)'
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.05)' },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false, backdropColor: 'transparent' },
+                    pointLabels: {
+                        font: { size: 11, weight: '500' },
+                        color: '#334155'
+                    }
+                }
+            }
+        }
+        });
+        
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\ud574\uc758 \uc870\uac74\uc774 \uc8fc\uc5b4\uc9c4 \uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc5f0\ub9bd\uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud65c\uc6a9 (\uc2e4\uc0dd\ud65c\uacfc \ub18d\ub3c4)", "\ubd80\ub4f1\uc2dd\uc758 \uc131\uc9c8\uacfc \ud480\uc774", "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud65c\uc6a9 (\uc218\uc640 \ub3c4\ud615)"],
+            datasets: [{
+                label: '문항 수',
+                data: [6, 2, 6, 3, 3],
+            backgroundColor: 'rgba(102, 77, 0, 0.6)',
+            borderColor: 'rgb(102, 77, 0)',
+            borderWidth: 1,
+            borderRadius: 4
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { stepSize: 1 }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [0, 0, 10, 3, 1],
+            backgroundColor: '#664D00',
+            borderRadius: 2
+                    },
+            {
+                label: '오답',
+                data: [0, 0, 6, 0, 0],
+            backgroundColor: '#b35a5a',
+            borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                }
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
