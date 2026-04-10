@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 이시윤 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="이시윤 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 이시윤 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TikZJax: browser-side TikZ rendering -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">중2_1학기_중간고사_신봉중_2023</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">이시윤</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.04.10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">74<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">15<span
+                        class="text-base text-slate-400 font-normal"> / 20</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">문자가 포함된 일차부등식</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (AI 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                <p>이시윤 학생, 안녕하세요. 중2 1학기 중간고사 결과, 74점을 받았습니다. 전체적인 시험 결과보다 <b>문제 풀이 과정</b>을 살펴보니, 꼼꼼하게 개념을 공부하고 문제에 접근하려는 노력이 엿보입니다. 특히 <b>유리수와 순환소수 단원</b>에서 유한소수와 순환소수의 정의를 정확히 이해하고, 순환마디를 찾아내는 기초 문항을 맞히는 등 <b>기본 개념</b>은 잘 다져져 있음을 확인할 수 있었습니다. 또한, <b>식의 계산</b> 단원에서도 거듭제곱과 단항식의 곱셈 나눗셈을 활용하는 문제에서 좋은 결과를 보여주었습니다. 이는 <b>대수적 계산 능력</b>이 상당하다는 것을 의미합니다.</p>
+
+<p>다만, 몇몇 문제에서 아쉬운 부분이 있었습니다. <b>1번 문제(유리수와 순환소수)</b>는 분수를 기약분수로 완전히 약분하지 않아 유한소수 여부를 판단하는 데 어려움을 겪은 것으로 보입니다. 앞으로는 분수 약분 연습을 통해 <b>기약분수 개념</b>을 확실히 익히고, 분모의 <b>소인수분해</b>를 정확하게 수행하는 연습이 필요합니다. <b>10번, 11번 문제(식의 계산)</b>에서는 거듭제곱의 덧셈을 단순 곱셈으로 착각하거나, 지수 법칙을 적용하는 과정에서 실수가 있었습니다. <b>지수 법칙</b>을 다시 한번 점검하고, 다양한 유형의 문제를 풀어보면서 <b>계산 연습</b>을 꾸준히 하는 것이 중요합니다. 특히, <b>밑 통일</b>과 <b>공통인수 묶기</b>를 활용하여 식을 간단하게 만드는 연습에 집중해 보세요.</p>
+
+<p>가장 주의해야 할 부분은 <b>20번 문제(문자가 포함된 일차부등식)</b>입니다. 이 문제는 <b>문자 계수</b>를 포함한 부등식의 해를 구하는 문제로, <b>부등호 방향 전환</b>에 대한 정확한 이해와 <b>조건부 해</b>를 찾는 능력이 필요합니다. 문자 식의 나눗셈 시 부등호가 바뀌는 원리를 다시 한번 확인하고, 다양한 조건을 적용하여 문제를 풀어보면서 논리적 사고력을 키우는 것이 중요합니다. <b>17번 문제(일차부등식)</b> 역시 수직선 상의 해를 부등호로 정확하게 표현하는 연습이 필요합니다. 전반적으로 <b>부등식의 성질</b>을 확실히 이해하고, 수직선을 활용하여 해를 시각적으로 확인하는 연습을 병행하면 좋은 결과를 얻을 수 있을 것입니다. 앞으로 꾸준히 노력하면 더욱 향상된 성적을 거둘 수 있을 것이라고 믿습니다.</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <div class="report-card p-5">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">영역별 성취도</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="report-card p-5 ">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+                
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">20번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">일차부등식 $(a - b)x - 4a + b &gt; 0$의 해가 $x &lt; \dfrac{1}{2}$일 때, $(a + b)x + 2a - b &gt; 0$의 해는? (단, $a &gt; 0$)<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$x &gt; \dfrac{3}{8}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$x &gt; \dfrac{5}{8}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$x &gt; \dfrac{7}{4}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$x &lt; \dfrac{5}{8}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$x &lt; \dfrac{7}{4}$</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">문자 계수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">부등호 방향 전환 논리</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">조건부 해</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">초고난도</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">1번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            하</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">유한소수로 나타낼 수 있는 것은?<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$\dfrac{11}{15}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$\dfrac{51}{180}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$\dfrac{27}{2^2 \times 3^5}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$\dfrac{21}{2^2 \times 5 \times 7}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$\dfrac{7}{2^2 \times 5 \times 21}$</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유한소수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">분수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">기약분수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">소인수분해</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">10번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">$\left(\dfrac{27^7 + 9^8}{27^5 + 9^5}\right)^2 = 3^x$라고 할 때, $x$의 값은?<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;3</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;6</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;9</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;12</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;15</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">지수법칙</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">밑 통일</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">거듭제곱의 덧셈 분해</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">11번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">$\dfrac{2^{30} \times 15^{60}}{45^{30}}$은 $a$자리 수이다. 이 때, $a$의 값은?<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;28</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;29</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;30</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;31</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;32</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">소인수분해</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">자릿수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">지수 묶기</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">17번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">부등식의 해를 수직선 위에 나타내었을 때, 그림과 같이 나타나는 일차부등식으로 옳은 것만을 &lt;보기&gt;에서 고른 것은?<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div><div style="border:1px solid #64748b; padding:10px; margin:10px 0; border-radius:4px; background-color:#f8fafc;"><b>보기</b><br>ㄱ. $5 - \dfrac{x}{4} \le 4$ &emsp;&emsp; ㄴ. $4x \ge 2x - 6$<br>ㄷ. $2x - 3 \le 3(x - 1)$<br>ㄹ. $0.5x - 1.2 \le 0.8x - 0.3$</div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;ㄱ, ㄴ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;ㄱ, ㄷ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;ㄴ, ㄷ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;ㄴ, ㄹ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;ㄷ, ㄹ</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">수직선 해</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">부등식 풀이</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">부등호 등호 표기</span>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+        
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ["\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218", "\uc2dd\uc758 \uacc4\uc0b0", "\ubb38\uc790\uac00 \ud3ec\ud568\ub41c \uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc77c\ucc28\ubd80\ub4f1\uc2dd", "\ud574\uc758 \uc870\uac74\uc774 \uc8fc\uc5b4\uc9c4 \uc77c\ucc28\ubd80\ub4f1\uc2dd"],
+            datasets: [{
+                label: '성취도 (%)',
+                data: [87.5, 71.4, 0.0, 50.0, 100.0],
+            fill: true,
+            backgroundColor: 'rgba(102, 77, 0, 0.1)',
+            borderColor: 'rgb(102, 77, 0)',
+            pointBackgroundColor: 'rgb(102, 77, 0)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(102, 77, 0)'
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.05)' },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false, backdropColor: 'transparent' },
+                    pointLabels: {
+                        font: { size: 11, weight: '500' },
+                        color: '#334155'
+                    }
+                }
+            }
+        }
+        });
+        
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218", "\uc2dd\uc758 \uacc4\uc0b0", "\ubb38\uc790\uac00 \ud3ec\ud568\ub41c \uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc77c\ucc28\ubd80\ub4f1\uc2dd", "\ud574\uc758 \uc870\uac74\uc774 \uc8fc\uc5b4\uc9c4 \uc77c\ucc28\ubd80\ub4f1\uc2dd"],
+            datasets: [{
+                label: '문항 수',
+                data: [8, 7, 1, 2, 2],
+            backgroundColor: 'rgba(102, 77, 0, 0.6)',
+            borderColor: 'rgb(102, 77, 0)',
+            borderWidth: 1,
+            borderRadius: 4
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { stepSize: 1 }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [4, 0, 5, 4, 2],
+            backgroundColor: '#664D00',
+            borderRadius: 2
+                    },
+            {
+                label: '오답',
+                data: [1, 0, 1, 2, 1],
+            backgroundColor: '#b35a5a',
+            borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                }
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
