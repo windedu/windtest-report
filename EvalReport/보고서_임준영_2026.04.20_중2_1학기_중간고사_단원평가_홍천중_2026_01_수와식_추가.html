@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 임준영 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="임준영 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 임준영 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TikZJax: browser-side TikZ rendering -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">중2_1학기_중간고사_단원평가_홍천중_2026_01_수와식_추가</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">임준영</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.04.20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">89<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">44<span
+                        class="text-base text-slate-400 font-normal"> / 49</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">순환소수의 혼합 계산</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (AI 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                <p>임준영 학생, 89점이라는 좋은 결과 축하합니다! 특히 <b>유한소수의 판별</b> 관련 문제에서 <b>분모의 소인수 분해를 통한 유한소수 조건 확인</b>, 그리고 <b>순환소수의 분수 표현</b>에서 <b>공식을 활용한 정확한 변환 능력</b>은 매우 뛰어납니다. 이는 기본적인 개념 이해는 물론, 문제 해결 전략을 효과적으로 적용할 수 있음을 보여줍니다. 또한, <b>약분과 소인수분해를 활용</b>하여 문제를 해결하는 능력도 돋보입니다.</p>
+
+<p>다만, 몇몇 문제에서 아쉬운 부분이 있었습니다. 1번 문제처럼 <b>순환소수의 기본 개념</b>과 <b>순환마디의 의미</b>를 다시 한번 꼼꼼히 확인하는 것이 좋겠습니다. 19번, 21번, 24번, 25번 문제와 같이 난이도가 높은 문제에서는 <b>순환소수를 분수로 변환하는 과정</b>에서 오류가 발생하거나, <b>식의 배수 조건</b>, <b>기약분수 조건</b>, <b>역수 관계</b> 등 <b>복합적인 개념을 활용하는 추론 과정</b>에서 어려움을 겪은 것으로 보입니다. 특히 24번과 25번 문제는 <b>경우의 수 누락</b>이나 <b>다단계 추론 오류</b>가 발생하기 쉬운 유형이므로, 유사한 유형의 문제를 더 풀어보면서 문제 해결 전략을 다져보는 것이 필요합니다.</p>
+
+<p>전반적으로 준영 학생은 <b>수와 식의 기본 개념</b>에 대한 이해도가 높고, <b>문제 해결 능력</b> 또한 우수합니다. 앞으로는 <b>복잡한 문제에 대한 접근 방식</b>을 개선하고, <b>세밀한 계산 연습</b>과 <b>개념 간의 연결 고리</b>를 명확히 하는 연습을 통해 더욱 높은 성적을 거둘 수 있을 것입니다. 특히, <b>유한소수 판별 조건</b>과 <b>순환소수 분수 변환 공식</b>을 완벽하게 숙지하고, 다양한 유형의 문제를 풀어보면서 응용력을 키우는 것을 추천합니다.</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <div class="report-card p-5">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">영역별 성취도</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="report-card p-5 ">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+                
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">1번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            하</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">다음 옳은 것을 &lt;보기&gt;에서 모두 고른 것은?     <div style="border:1.5px solid #475569; padding:14px; margin:16px 0; border-radius:6px; background-color:#f8fafc;">(ㄱ) 분수 $\dfrac{9}{22}$ 를 소수로 나타내면 $0.4\dot{0}\dot{9}$이다.<br>(ㄴ) 순환소수 $3.232323\dots$의 순환마디는 $32$이다.<br>(ㄷ) 순환소수 $6.4\dot{7}\dot{9}$의 소수점 아래 $40$번째 자리의 숫자는 $9$이다.</div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;(ㄱ)</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;(ㄷ)</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;(ㄱ), (ㄴ)</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;(ㄱ), (ㄷ)</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;(ㄴ), (ㄷ)</li></ul><br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">순환소수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유한소수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">순환마디</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">19번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">서로소인 두 자연수 $a, b$ 에 대하여 $4.\dot{3} \times \dfrac{b}{a} = 0.15\dot{6}$ 일 때, $a-b$ 의 값을 구하는 풀이 과정과 답을 쓰시오. <br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">순환소수 분수 계산</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">서로소</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">방정식</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">21번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">순환소수 $0.\dot{0}\dot{2}$ 를 분수로 나타내면 $\dfrac{q}{p}$ 일 때, 자연수 $n$ 에 대하여 $\dfrac{6}{p} \times n + \dfrac{q}{11}$ 가 자연수가 되도록 하는 $n$ 의 최솟값을 구하시오. (단, $p$ 와 $q$ 는 서로소인 자연수) <br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">순환소수 변환</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">식의 배수성</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">자연수 조건</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">24번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">다음을 만족하는 기약분수 $\dfrac{b}{a}$ 의 개수는?<ul style="list-style:none;padding:0.3em 0 0.3em 1.2em;margin:0.5em 0;overflow:visible;"><li style="padding:0.2em 0;line-height:1.6;">•&ensp;$a, b$ 는 3 이상 20 이하의 자연수이다.</li><li style="padding:0.2em 0;line-height:1.6;">•&ensp;$\dfrac{21}{270} \times \dfrac{b}{a}$ 는 유한소수로 나타낼 수 있다.</li></ul><b>[주의: 원본 시험지 선택지 오류로 추정되어, 올바른 정답 10을 5번 보기에 반영함]</b><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;6</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;7</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;8</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;9</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;10</li></ul><br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">기약분수 조건</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유한소수 소거</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">경우의 수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">서로소</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">25번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">분수 $\dfrac{a}{420}$ 와 $\dfrac{420}{a}$ 는 모두 정수가 아닌 유리수이며, 각각 유한소수로 나타낼 수 있다. $\dfrac{420}{a} \times x$ 가 자연수가 되게 하는 가장 작은 자연수 $x$ 는 4일 때, $\dfrac{a}{420}$ 를 기약분수로 나타내면 $\dfrac{c}{b}$ 이다. $b+c$ 의 값은? (단, $a, b, c$ 는 모두 자연수이고, $1 &lt; a &lt; 420$ 이다.)<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;7</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;8</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;9</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;10</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;11</li></ul><br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유한소수 방정식</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">역수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">복합 추론</span>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+        
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ["\uc720\ud55c\uc18c\uc218\uc758 \ud310\ubcc4", "\uc21c\ud658\uc18c\uc218\uc758 \ubd84\uc218 \ud45c\ud604", "\uc720\ud55c\uc18c\uc218\uc640 \uc21c\ud658\uc18c\uc218 \uac1c\ub150", "\uc9c0\uc218\ubc95\uce59", "\ub2e8\ud56d\uc2dd\uc758 \uacf1\uc148\uacfc \ub098\ub217\uc148", "\ub2e4\ud56d\uc2dd\uc758 \ub367\uc148\uacfc \ube84\uc148", "\ub2e4\ud56d\uc2dd\uacfc \ub2e8\ud56d\uc2dd\uc758 \ud63c\ud569\uacc4\uc0b0", "\uc21c\ud658\uc18c\uc218\uc758 \uc8fc\uae30\uc640 \ud45c\ud604", "\uc720\ub9ac\uc218\uc640 \ubb34\ud55c\uc18c\uc218\uc758 \uad00\uacc4", "\uc21c\ud658\uc18c\uc218\uc758 \ud63c\ud569 \uacc4\uc0b0"],
+            datasets: [{
+                label: '성취도 (%)',
+                data: [83.3, 100.0, 50.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 33.3],
+            fill: true,
+            backgroundColor: 'rgba(102, 77, 0, 0.1)',
+            borderColor: 'rgb(102, 77, 0)',
+            pointBackgroundColor: 'rgb(102, 77, 0)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(102, 77, 0)'
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.05)' },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false, backdropColor: 'transparent' },
+                    pointLabels: {
+                        font: { size: 11, weight: '500' },
+                        color: '#334155'
+                    }
+                }
+            }
+        }
+        });
+        
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\uc720\ud55c\uc18c\uc218\uc758 \ud310\ubcc4", "\uc21c\ud658\uc18c\uc218\uc758 \ubd84\uc218 \ud45c\ud604", "\uc720\ud55c\uc18c\uc218\uc640 \uc21c\ud658\uc18c\uc218 \uac1c\ub150", "\uc9c0\uc218\ubc95\uce59", "\ub2e8\ud56d\uc2dd\uc758 \uacf1\uc148\uacfc \ub098\ub217\uc148", "\ub2e4\ud56d\uc2dd\uc758 \ub367\uc148\uacfc \ube84\uc148", "\ub2e4\ud56d\uc2dd\uacfc \ub2e8\ud56d\uc2dd\uc758 \ud63c\ud569\uacc4\uc0b0", "\uc21c\ud658\uc18c\uc218\uc758 \uc8fc\uae30\uc640 \ud45c\ud604", "\uc720\ub9ac\uc218\uc640 \ubb34\ud55c\uc18c\uc218\uc758 \uad00\uacc4", "\uc21c\ud658\uc18c\uc218\uc758 \ud63c\ud569 \uacc4\uc0b0"],
+            datasets: [{
+                label: '문항 수',
+                data: [12, 7, 2, 8, 6, 4, 5, 1, 1, 3],
+            backgroundColor: 'rgba(102, 77, 0, 0.6)',
+            borderColor: 'rgb(102, 77, 0)',
+            borderWidth: 1,
+            borderRadius: 4
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { stepSize: 1 }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [6, 0, 19, 12, 7],
+            backgroundColor: '#664D00',
+            borderRadius: 2
+                    },
+            {
+                label: '오답',
+                data: [1, 0, 0, 1, 3],
+            backgroundColor: '#b35a5a',
+            borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                }
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
