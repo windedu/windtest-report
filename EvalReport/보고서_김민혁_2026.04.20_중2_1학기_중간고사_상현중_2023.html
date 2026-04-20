@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 김민혁 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="김민혁 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 김민혁 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TikZJax: browser-side TikZ rendering -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">중2_1학기_중간고사_상현중_2023</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">김민혁</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.04.20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">79<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">18<span
+                        class="text-base text-slate-400 font-normal"> / 22</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">일차부등식의 활용</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (AI 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                <p>민혁 학생, 이번 시험을 통해 수학적 사고의 기초가 매우 탄탄하다는 것을 확인할 수 있었습니다. 특히 <b>지수법칙의 다양한 활용</b>이나 <b>순환소수의 성질을 이용한 고난도 문제</b>에서 보여준 정교한 계산력은 매우 칭찬할 만합니다. 마방진 문제나 도형의 넓이를 다항식으로 표현하는 문항을 정답으로 이끌어낸 점은 민혁 학생이 <b>추상적인 수식을 구체적인 상황에 적용하는 분석력</b>을 이미 갖추고 있음을 증명합니다. 어려운 유형인 자릿수 구하기나 유리수 판별 문제에서도 흔들림 없는 실력을 보여준 점은 앞으로 더 높은 단계로 나아갈 수 있는 아주 중요한 밑거름이 될 것입니다.</p>
+
+<p>다만, 고득점으로 확실히 도약하기 위해 보완해야 할 몇 가지 핵심 포인트가 있습니다. 이번에 오답이 발생한 <b>입장료 할인 및 유리한 조건 선택</b> 문항들은 단순한 계산보다는 '두 가지 이상의 상황을 각각 부등식으로 세우고 비교'하는 <b>수학적 모델링 역량</b>을 집중적으로 요구합니다. 특히 할인율과 정액 할인을 동시에 고려해야 하는 복합적인 조건에서 실수가 생기지 않도록 상황을 구조화하는 연습이 필요합니다. 또한 <b>회전체의 부피와 식의 계산이 결합된 유형</b>처럼 기하학적 개념과 대수적 계산이 통합된 문항에서는 공식의 적용 이전에 입체도양의 변화를 수식으로 정확히 옮기는 훈련을 병행해 보세요. 이 부분들만 다듬는다면 다음 시험에서는 민혁 학생의 잠재력이 더욱 빛을 발할 것입니다.</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <div class="report-card p-5">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">영역별 성취도</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="report-card p-5 ">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+                
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">13번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중상</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">다음 그림과 같은 직사각형 $\mathrm{ABCD}$에서 선분 $\mathrm{AB}$와 선분 $\mathrm{BC}$를 각각 축으로 하여 1회전 한 회전체의 부피를 각각 $V_1, V_2$라고 할 때, $\dfrac{V_1}{V_2}$은?<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$\dfrac{3}{8}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$\dfrac{9a}{16}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$\dfrac{3}{8b}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$\dfrac{9b}{4}$</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$\dfrac{3}{4b}$</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">식의 계산</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">회전체</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">부피</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">9번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">분수 $\dfrac{1}{2}, \dfrac{1}{3}, \dfrac{1}{4}, \dots, \dfrac{1}{70}$을 소수로 나타낼 때, 유한소수가 아닌 것의 개수는?<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;11</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;12</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;57</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;58</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;59</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유한소수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">순환소수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">개수</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">19번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">어느 수학 박물관의 입장료는 한 사람당 $4,000$원이고 $20$명 이상의 단체인 경우에는 입장료의 $20\%$를 할인해 준다고 한다. $20$명의 단체 입장권을 사는 것이 유리한 최소한의 인원수는?<ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;20</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;19</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;18</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;17</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;16</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식의 활용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유리한 조건</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">22번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">다음은 어느 음식점 메뉴판이다. 음료 1가지와 식사류 1가지를 주문하려고 한다. 이 음식점의 회원 카드는 전체 가격의 40\%를 할인해주고, 할인쿠폰은 전체 가격에서 5,000원을 할인해준다. 이때, 비용을 적게 지불하기에 회원카드가 더 유리하도록 식사류를 선택할 때, 주문할 수 있는 정식 종류의 개수는? (단, 회원카드와 할인쿠폰을 중복하여 사용할 수 없다.)<div style="border:1px solid #64748b; padding:10px; margin:10px 0; border-radius:4px; background-color:#f8fafc;">
+$&lt;$메 뉴$&gt;$ <br>
+<u>음 료</u> <br>콜라, 사이다, 환타 - 3,000원 <br>
+<u>식사류</u> <br>A 정식 - 7,000원 <br>B 정식 - 8,000원 <br>C 정식 - 9,000원 <br>D 정식 - 10,000원 <br>E 정식 - 12,000원
+
+
+</div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;1</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;2</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;3</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;4</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;5</li></ul></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">일차부등식의 활용</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">유리한 조건 선택</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">할인 계산</span>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+        
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ["\uc2dd\uc758 \uacc4\uc0b0", "\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218", "\ub2e4\ud56d\uc2dd\uc758 \uacc4\uc0b0", "\uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud65c\uc6a9"],
+            datasets: [{
+                label: '성취도 (%)',
+                data: [83.3, 88.9, 100.0, 100.0, 33.3],
+            fill: true,
+            backgroundColor: 'rgba(102, 77, 0, 0.1)',
+            borderColor: 'rgb(102, 77, 0)',
+            pointBackgroundColor: 'rgb(102, 77, 0)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(102, 77, 0)'
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.05)' },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false, backdropColor: 'transparent' },
+                    pointLabels: {
+                        font: { size: 11, weight: '500' },
+                        color: '#334155'
+                    }
+                }
+            }
+        }
+        });
+        
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\uc2dd\uc758 \uacc4\uc0b0", "\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218", "\ub2e4\ud56d\uc2dd\uc758 \uacc4\uc0b0", "\uc77c\ucc28\ubd80\ub4f1\uc2dd", "\uc77c\ucc28\ubd80\ub4f1\uc2dd\uc758 \ud65c\uc6a9"],
+            datasets: [{
+                label: '문항 수',
+                data: [6, 9, 2, 2, 3],
+            backgroundColor: 'rgba(102, 77, 0, 0.6)',
+            borderColor: 'rgb(102, 77, 0)',
+            borderWidth: 1,
+            borderRadius: 4
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { stepSize: 1 }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [2, 0, 12, 4, 0],
+            backgroundColor: '#664D00',
+            borderRadius: 2
+                    },
+            {
+                label: '오답',
+                data: [0, 0, 3, 1, 0],
+            backgroundColor: '#b35a5a',
+            borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                }
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
