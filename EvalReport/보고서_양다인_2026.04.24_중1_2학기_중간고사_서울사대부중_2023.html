@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학업 성취도 분석 보고서 - 양다인 학생</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="양다인 테스트 리포트">
+    <meta property="og:description" content="중등과정에 대한 양다인 학생의 상세 학습 분석 리포트입니다.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=630">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TikZJax: browser-side TikZ rendering -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfcf9;
+            word-break: keep-all;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* PC/Tablet layout: constrain width similar to A4 or readable width */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                /* iPad portrait / A4 width approx */
+            }
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(102, 77, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tag-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin: 0.1rem;
+        }
+
+        .print-btn-float {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #664D00;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px -5px rgba(102, 77, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .print-btn-float:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100%;
+            }
+
+            .report-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .no-print,
+            .print-btn-float {
+                display: none !important;
+            }
+
+            /* Colors adjustment for print */
+            .bg-[#664D00]/5 {
+                background-color: #fcfbf8 !important;
+                /* Fallback for transparency */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* MathJax CHTML: prevent clipping from negative margins */
+        mjx-container {
+            overflow: visible !important;
+        }
+
+        mjx-container>* {
+            overflow: visible !important;
+        }
+
+        /* Give task list items enough space so CHTML math top doesn't get clipped */
+        ul[style*="list-style:none"] {
+            overflow: visible;
+        }
+
+        ul[style*="list-style:none"] li {
+            overflow: visible;
+            line-height: 1.8;
+        }
+
+        .report-card {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn-float no-print" onclick="window.print()">
+        <span> PDF 저장 / 인쇄 </span>
+    </button>
+
+    <div class="container mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#664D00] mb-2">학업 성취도 보고서</h1>
+            <p class="text-slate-500 text-sm mb-6">중1_2학기_중간고사_서울사대부중_2023</p>
+
+            <div
+                class="bg-[#664D00]/5 p-4 rounded-xl border border-[#664D00]/10 inline-block w-full md:w-auto min-w-[300px]">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6">
+                    <div>
+                        <span class="text-[#664D00] font-medium mr-2">학생명</span>
+                        <span class="text-xl text-[#4a3800] font-bold">양다인</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-[#664D00]/20"></div>
+                    <div>
+                        <span class="text-slate-400 text-sm">2026.04.24</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="report-card p-5 text-center border-t-4 border-[#664D00]">
+                <p class="text-sm text-slate-500 mb-1">총점</p>
+                <p class="text-3xl font-black text-[#664D00]">91<span
+                        class="text-lg text-slate-400 font-normal">/100</span>
+                </p>
+            </div>
+            <!-- Score Rate Removed as requested -->
+            <div class="report-card p-5 text-center border-t-4 border-slate-700">
+                <p class="text-sm text-slate-500 mb-1">맞힌 문항</p>
+                <p class="text-2xl font-bold text-slate-700">23<span
+                        class="text-base text-slate-400 font-normal"> / 25</span></p>
+            </div>
+            <div class="report-card p-5 text-center border-t-4 border-[#b35a5a] flex flex-col justify-center">
+                <p class="text-sm text-slate-500 mb-1">취약 영역</p>
+                <p class="text-lg font-bold text-[#b35a5a] leading-tight break-keep">위치 관계</p>
+            </div>
+        </div>
+
+        <!-- Total Evaluation Section -->
+        <div class="report-card p-6 mb-6 border-l-4 border-[#664D00]">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#664D00]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                종합 평가 (AI 피드백)
+            </h3>
+            <div class="text-slate-700 leading-relaxed text-[1.05rem] space-y-3 font-medium">
+                <p>양다인 학생의 '중1_2학기_중간고사_서울사대부중_2023' 학업 성취도 분석 리포트입니다. 이번 시험에서 91점이라는 우수한 점수를 받으며 훌륭한 성과를 보여주었습니다.</p>
+
+<p>다인 학생은 <b>'정수와 유리수'</b> 단원에서 유리수의 나눗셈, 덧셈과 뺄셈 등 <b>혼합 계산 능력이 매우 능숙</b>하며, 절댓값, 대소 관계 등 기본 정의를 정확히 이해하고 적용하는 능력이 뛰어납니다. 또한 <b>수직선 상의 수를 읽고 정수와 유리수의 분류 기준 및 포함 관계를 명확히 파악</b>하고 있음이 확인되었습니다. <b>'기본 도형'</b> 단원에서도 <b>맞꼭지각과 평각의 성질을 활용한 각도 계산</b>이나 <b>반직선의 성질 및 선분의 중점과 길이 비례 관계</b> 등 기본적인 개념 이해와 적용 능력이 탄탄합니다. 이러한 강점들은 앞으로의 심화 학습을 위한 튼튼한 토대가 될 것입니다.</p>
+
+<p>이번 시험에서 아쉽게 틀린 두 문항을 통해 앞으로 더 발전할 수 있는 부분을 짚어보고자 합니다. 14번 문항은 <b>'직선의 결정 조건'</b>을 이해하고, 특히 <b>일직선 위에 놓인 점들을 고려하여 서로 다른 직선의 개수를 중복 없이 세는 능력</b>을 평가하는 문제였습니다. 단순히 점의 개수로만 판단하기보다, '서로 다른 하나의 직선이 결정되는 조건'을 명확히 하고, 중복을 피하기 위한 체계적인 접근 방식을 연습하는 것이 중요합니다. 22번 문항은 <b>'위치 관계'</b> 단원에서 <b>'엇각, 동위각, 동측내각'의 개념</b>을 정확히 파악하고, 이들이 <b>평행선과 맺는 관계를 판단하는 능력</b>을 요구했습니다. 세 직선이 교차할 때 형성되는 각들의 관계를 그림으로 그려보면서 평행선의 성질이 어떻게 적용되는지, 그리고 특정 각의 관계가 주어졌을 때 두 직선이 평행하다고 결론 내릴 수 있는 조건(역)에 대해 다시 한번 정리해 보는 것이 큰 도움이 될 것입니다.</p>
+
+<p>다인 학생은 기본적인 개념 이해와 연산 능력에서 매우 강점을 보이고 있습니다. 앞으로는 이번에 틀린 문항들처럼, 여러 조건을 복합적으로 고려하거나 개념의 심화 적용이 필요한 <b>'중' 난이도 문제들</b>에 대해 <b>좀 더 꼼꼼하고 다각적인 접근 방식</b>을 연습하는 데 집중한다면 더욱 탁월한 학업 성취를 이룰 수 있을 것입니다. 이번 시험 결과를 바탕으로 자신의 강점을 더욱 빛내고, 필요한 부분을 보완하며 다음 학습 단계로 나아가기를 응원합니다.</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <div class="report-card p-5">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">영역별 성취도</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="report-card p-5 ">
+                <h3 class="text-base font-bold text-slate-700 mb-4 text-center">단원별 문항 수</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="unitCountChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-card p-5 mb-6">
+            <h3 class="text-base font-bold text-slate-700 mb-4 text-center">난이도별 정답률</h3>
+            <div class="relative h-48 w-full">
+                <canvas id="difficultyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-slate-700 mb-4 px-1 border-l-4 border-[#664D00] pl-3">오답 문제 정보</h3>
+            <div class="space-y-4">
+                
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">14번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">그림과 같이 중심이 $O$ 이고 지름이 $\overline{AB}$ 인 반원의 원주 위에 세 점 $C, D, E$ 가 있다. 주어진 6개의 점 중 서로 다른 두 점을 지나는 직선의 개수를 모두 구한 것은? (4.0점)<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;$8$ 개</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;$10$ 개</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;$13$ 개</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;$15$ 개</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;$20$ 개</li></ul><br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">직선의 개수</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">직선의 결정조건</span>
+                        
+                    </div>
+                </div>
+                
+                <div class="report-card p-5 border-l-4 border-[#b35a5a] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                        <span class="font-bold text-[#b35a5a] text-lg">22번 문항</span>
+                        <span
+                            class="text-xs bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 font-medium border border-slate-200">난이도:
+                            중</span>
+                    </div>
+                    <div class="text-[0.95rem] font-medium text-slate-800 mb-3 leading-relaxed">서로 다른 세 직선 $l, m, n$ 이 각각 교차할 때 생기는 교각을 그림과 같이 나타낸다고 한다. 이에 대한 설명으로 다음에서 옳은 것만을 있는 대로 고른 것은? (5.0점)<div style="text-align:center;margin:0.6em 0;"><img src="data:image/png;base64,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" style="max-width:100%; height:auto;" alt="TikZ diagram"></div><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">ㄱ.&ensp;$\angle p$ 는 $\angle c$ 의 엇각이다.</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">ㄴ.&ensp;$\angle q$ 는 $\angle c$ 의 동위각이다.</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">ㄷ.&ensp;$\angle c = \angle g$ 이면 $l \parallel m$ 이다.</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">ㄹ.&ensp;$\angle c = \angle h$ 이면 $l \parallel m$ 이다.</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">ㅁ.&ensp;$\angle c + \angle h = 180^\circ$ 이면 $l \parallel m$ 이다.</li></ul><ul style="list-style:none;padding:0.3em 0 0.3em 0.8em;margin:0.5em 0;overflow:visible;"><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">①&ensp;ㄱ, ㄴ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">②&ensp;ㄴ, ㄷ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">③&ensp;ㄱ, ㄴ, ㄷ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">④&ensp;ㄴ, ㄷ, ㄹ</li><li style="padding:0.45em 0 0.1em 0;line-height:1.8;">⑤&ensp;ㄴ, ㄷ, ㅁ</li></ul><br></div>
+                    <div class="flex flex-wrap gap-2">
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">엇각</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">동위각</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">평행선의 성질</span>
+                        
+                        <span class="tag-badge bg-[#664D00]/5 text-[#664D00] border border-[#664D00]/20">동측내각</span>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common Chart Options
+        Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. Radar Chart (Achievement per Unit)
+        
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ["\uae30\ubcf8 \ub3c4\ud615", "\uc815\uc218\uc640 \uc720\ub9ac\uc218", "\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218", "\uc18c\uc778\uc218\ubd84\ud574", "\uc704\uce58 \uad00\uacc4"],
+            datasets: [{
+                label: '성취도 (%)',
+                data: [87.5, 100.0, 100.0, 100.0, 75.0],
+            fill: true,
+            backgroundColor: 'rgba(102, 77, 0, 0.1)',
+            borderColor: 'rgb(102, 77, 0)',
+            pointBackgroundColor: 'rgb(102, 77, 0)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(102, 77, 0)'
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.05)' },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    ticks: { display: false, backdropColor: 'transparent' },
+                    pointLabels: {
+                        font: { size: 11, weight: '500' },
+                        color: '#334155'
+                    }
+                }
+            }
+        }
+        });
+        
+
+        // 2. Bar Chart (Questions per Unit) - NEW
+        const ctxUnit = document.getElementById('unitCountChart').getContext('2d');
+        new Chart(ctxUnit, {
+            type: 'bar',
+            data: {
+                labels: ["\uae30\ubcf8 \ub3c4\ud615", "\uc815\uc218\uc640 \uc720\ub9ac\uc218", "\uc720\ub9ac\uc218\uc640 \uc21c\ud658\uc18c\uc218", "\uc18c\uc778\uc218\ubd84\ud574", "\uc704\uce58 \uad00\uacc4"],
+            datasets: [{
+                label: '문항 수',
+                data: [8, 10, 2, 1, 4],
+            backgroundColor: 'rgba(102, 77, 0, 0.6)',
+            borderColor: 'rgb(102, 77, 0)',
+            borderWidth: 1,
+            borderRadius: 4
+                }]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Horizontal Bar Chart for better readability of unit names
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { stepSize: 1 }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            }
+        }
+        });
+
+        // 3. Stacked Bar Chart (Difficulty)
+        const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+        new Chart(ctxDiff, {
+            type: 'bar',
+            data: {
+                labels: ['하', '중하', '중', '중상', '상'],
+                datasets: [
+                    {
+                        label: '정답',
+                        data: [16, 2, 3, 0, 2],
+            backgroundColor: '#664D00',
+            borderRadius: 2
+                    },
+            {
+                label: '오답',
+                data: [0, 0, 2, 0, 0],
+            backgroundColor: '#b35a5a',
+            borderRadius: 2
+                    }
+                ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true, font: { size: 11 } } }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false }
+                },
+                y: {
+                    stacked: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                }
+            }
+        }
+        });
+    </script>
+</body>
+
+</html>
